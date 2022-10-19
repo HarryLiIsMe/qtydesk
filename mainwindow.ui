@@ -398,6 +398,9 @@ border:4px solid rgb(44,140,255);
            </property>
           </widget>
           <widget class="QPushButton" name="bt_connectRemoteDevice">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
            <property name="geometry">
             <rect>
              <x>150</x>

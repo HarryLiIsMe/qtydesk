@@ -44,6 +44,9 @@ void MainWindow::loadUIConnect(){
      connect(ui->bt_changePasswd,&BtnPassSetting::reflashPasswd,this,&MainWindow::getRandomString) ;
      connect(ui->bt_changePasswd,&BtnPassSetting::setNewPasswd,this,&MainWindow::showChangePassDialog) ;
 //     connect(ui->bt_changePasswd,&BtnPassSetting::copyPasswd,this,&MainWindow::copyPasswd) ;
+
+     //对话框信号 到 主界面处理
+     connect(m_changeDialog,&DlgChangePasswd::setPasswdOk,this,&MainWindow::setTempPassword) ;
 }
 void MainWindow::loadTrayMenu()
 {
@@ -178,9 +181,11 @@ void MainWindow::showConnectedStatus(bool showStatus){
     if(m_isConnectedToServer){
         ui->bt_lamp->setStyleSheet("background-color:rgb(50,190,166);border-radius:10px;");
         message.append("就绪");
+        //ui->bt_connectRemoteDevice->setEnabled(true);
     }else{
         ui->bt_lamp->setStyleSheet("background-color:rgb(185,54,54);border-radius:10px;");
         message.append("连接失败，启动重连。。。 ");
+        //ui->bt_connectRemoteDevice->setEnabled(false);
     }
     ui->lb_connect_state->setText(message);
 }
@@ -213,16 +218,8 @@ QString MainWindow::getRandomString()
 {
     QString strUUID = QUuid::createUuid().toString().remove("{").remove("}").remove("-");
     QString randomPass = strUUID.right(6) ;
-    if(m_socketHandler){
-        m_socketHandler->setTempPass(randomPass);
-    }
-    QSettings settings("config.ini",QSettings::IniFormat);
-    settings.beginGroup("REMOTE_DESKTOP_SERVER");
 
-    settings.setValue("tempPass",randomPass);
-
-    settings.endGroup();
-    settings.sync();
+    setTempPassword(randomPass);
 
     return randomPass;
 }
@@ -256,3 +253,17 @@ void MainWindow::showChangePassDialog(){
     m_changeDialog->exec();
 }
 //--------------------显示改变密码对话框------------------------------//
+
+void MainWindow::setTempPassword(const QString &passwd)
+{ 
+    if(m_socketHandler){
+        m_socketHandler->setTempPass(passwd);
+    }
+    QSettings settings("config.ini",QSettings::IniFormat);
+    settings.beginGroup("REMOTE_DESKTOP_SERVER");
+
+    settings.setValue("tempPass",passwd);
+
+    settings.endGroup();
+    settings.sync();
+}

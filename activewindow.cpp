@@ -2,7 +2,7 @@
 #include "ui_activewindow.h"
 
 #include <QThread>
-#include <QMessageBox>
+#include <QMouseEvent>
 #include <QPainter>
 #include <QBuffer>
 #include <QFile>
@@ -14,6 +14,7 @@ ActiveWindow::ActiveWindow(QWidget *parent) :
     m_remoteID(""),
     m_remotePass("")
 {
+    setMouseTracking(true);
     ui->setupUi(this);
 }
 
@@ -26,7 +27,6 @@ void ActiveWindow::dealPaintImg(quint16 posX, quint16 posY, const QByteArray &im
     m_posX = posX ;
     m_posY = posY ;
     QByteArray raw;
-    raw.clear();
     unsigned char header[16] = {137,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82};
     raw.append((char *)header,16);
     raw.append(imageData);
@@ -40,12 +40,11 @@ void ActiveWindow::dealPaintImg(quint16 posX, quint16 posY, const QByteArray &im
 
     update();
 }
+
+
 void ActiveWindow::paintEvent(QPaintEvent *)
 {
-
     QPainter painter(this);
-//    qDebug()<<m_posX;
-//    qDebug()<<m_posY;
     painter.drawPixmap(0,0,this->width(),this->height(),m_lastImg);
 }
 
@@ -53,6 +52,48 @@ void ActiveWindow::closeEvent(QCloseEvent *e)
 {
     qDebug()<<"closeEvent";
     emit closeSignal();
+}
+
+void ActiveWindow::mouseMoveEvent(QMouseEvent *event)
+{
+    //当前窗体坐标
+    QPoint currentPoint = event->pos();
+    //当前窗体大小
+    QSize currentSize = this->size()  ;
+    int really_x = currentPoint.x() * m_imageWidth / currentSize.width() ;
+    int really_y = currentPoint.y() * m_imageHeight / currentSize.height();
+    //    QPoint newPoint(really_x,really_y);
+    emit mouseMoveSend(really_x,really_y);
+}
+
+void ActiveWindow::mousePressEvent(QMouseEvent *event)
+{
+
+}
+
+void ActiveWindow::mouseReleaseEvent(QMouseEvent *event)
+{
+
+}
+
+void ActiveWindow::wheelEvent(QWheelEvent *event)
+{
+
+}
+
+void ActiveWindow::mouseDoubleClickEvent(QMouseEvent *event)
+{
+
+}
+
+void ActiveWindow::keyPressEvent(QKeyEvent *event)
+{
+
+}
+
+void ActiveWindow::keyReleaseEvent(QKeyEvent *event)
+{
+
 }
 
 //void ActiveWindow::setRemoteID(QString remoteID)
@@ -87,6 +128,12 @@ void ActiveWindow::startActiveHandler(QString remoteIP,int port,QString remoteID
 
     connect(m_activeHandler, &ActiveHandler::paintImg, this, &ActiveWindow::dealPaintImg);
 
+    //控制事件
+    connect(this,SIGNAL(mouseMoveSend(int,int)),m_activeHandler,SLOT(slotSendMouseMove(int,int)));
+    //    connect(this,SIGNAL(sendMouseKeys(int,bool)),activeHandler,SLOT(slotSendMouseKeys(int,bool)));
+    //    connect(this,SIGNAL(sendWheelEvent(bool)),activeHandler,SLOT(slotSendWheelEvent(bool)));
+    //    connect(this,SIGNAL(sendKeyboard(int,bool)),activeHandler,SLOT(slotSendKeyboard(int,bool)));
+
     m_activeHandler->moveToThread(thread);
     thread->start();
 }
@@ -99,6 +146,8 @@ void ActiveWindow::showInfo(const QString &info){
 
 void ActiveWindow::imgParameters(int width, int height, int rectwidth)
 {
+    m_imageWidth = width ;
+    m_imageHeight = height;
     m_rectwidht = rectwidth;
     m_lastImg = QPixmap(width,height);
 }

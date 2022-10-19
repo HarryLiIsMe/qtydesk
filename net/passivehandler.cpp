@@ -19,7 +19,7 @@ PassiveHandler::PassiveHandler(QObject *parent) : SocketHandler(parent),
 
     //    connect(webSocketHandler, &WebSocketHandler::setKeyPressed, m_inputSimulator, &InputSimulator::simulateKeyboard);
     //    connect(webSocketHandler, &WebSocketHandler::setMousePressed, m_inputSimulator, &InputSimulator::simulateMouseKeys);
-    //    connect(webSocketHandler, &WebSocketHandler::setMouseMove, m_inputSimulator, &InputSimulator::simulateMouseMove);
+    connect(this, &PassiveHandler::setMouseMove, m_inputSimulator, &InputSimulator::simulateMouseMove);
     //    connect(webSocketHandler, &WebSocketHandler::setWheelChanged, m_inputSimulator, &InputSimulator::simulateWheelEvent);
     //    connect(webSocketHandler, &WebSocketHandler::setMouseDelta, m_inputSimulator, &InputSimulator::setMouseDelta);
 
@@ -67,6 +67,12 @@ void PassiveHandler::dealProto(int i,BigPack::Exchange resv_exc){
         int tileNum = resv_exc.tilereceived().tilenum();
         //qDebug()<<tileNum;
         emit receivedTileNum(tileNum);
+        break;
+    }
+    case BigPack::Exchange::MOUSE_MOVE:{
+        int x = resv_exc.mousemove().pointx();
+        int y = resv_exc.mousemove().pointy();
+        emit setMouseMove(x,y);
         break;
     }
     }

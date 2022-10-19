@@ -18,6 +18,8 @@ signals:
    void showDeviceID(QString);
    void getDesktop();
    void receivedTileNum(int tileNum);
+
+   void setMouseMove(quint16 posX, quint16 posY);
 protected:
    void dealProto(int i,BigPack::Exchange resv_exc) override;
 

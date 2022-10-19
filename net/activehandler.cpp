@@ -115,3 +115,17 @@ void ActiveHandler::sendReceivedTileNum(int tileNum)
     ex.set_allocated_tilereceived(tileReceived);
     serializeSend(ex);
 }
+
+void ActiveHandler::slotSendMouseMove(int x, int y)
+{
+    BigPack::Exchange ex ;
+    ex.set_datatype(BigPack::Exchange::MOUSE_MOVE);
+    ex.set_resourceid(m_transferID.toStdString()) ;
+    ex.set_targetid(m_remoteID.toStdString());
+
+    BigPack::APMouseMove *mm = new BigPack::APMouseMove;
+    mm->set_pointx(x);
+    mm->set_pointy(y);
+    ex.set_allocated_mousemove(mm);
+    serializeSend(ex);
+}

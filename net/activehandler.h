@@ -24,11 +24,14 @@ public slots:
    void setRemoteID(const QString &remoteID);
    void setRemotePass(const QString &remotePass);
 
+   void slotSendMouseMove(int x,int y);
 private slots:
    void queryHost(const QString &remoteID);
    void sendRequestAuth(const QString &remoteID,const QString &remotePass);
    void GetDesktop();
    void sendReceivedTileNum(int tileNum);
+
+
 };
 
 #endif // ACTIVEHANDLER_H

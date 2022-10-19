@@ -47,7 +47,7 @@ struct TableStruct_Exchange_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[12]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[13]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -55,6 +55,9 @@ struct TableStruct_Exchange_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Exchange_2eproto;
 namespace BigPack {
+class APMouseMove;
+struct APMouseMoveDefaultTypeInternal;
+extern APMouseMoveDefaultTypeInternal _APMouseMove_default_instance_;
 class APTileReceived;
 struct APTileReceivedDefaultTypeInternal;
 extern APTileReceivedDefaultTypeInternal _APTileReceived_default_instance_;
@@ -93,6 +96,7 @@ struct WMHeartbeatDefaultTypeInternal;
 extern WMHeartbeatDefaultTypeInternal _WMHeartbeat_default_instance_;
 }  // namespace BigPack
 PROTOBUF_NAMESPACE_OPEN
+template<> ::BigPack::APMouseMove* Arena::CreateMaybeMessage<::BigPack::APMouseMove>(Arena*);
 template<> ::BigPack::APTileReceived* Arena::CreateMaybeMessage<::BigPack::APTileReceived>(Arena*);
 template<> ::BigPack::CCGetDesktop* Arena::CreateMaybeMessage<::BigPack::CCGetDesktop>(Arena*);
 template<> ::BigPack::CCGiveImg* Arena::CreateMaybeMessage<::BigPack::CCGiveImg>(Arena*);
@@ -120,12 +124,13 @@ enum Exchange_DataType : int {
   Exchange_DataType_GIVE_IMG_PARA = 8,
   Exchange_DataType_GIVE_IMG = 9,
   Exchange_DataType_TILE_RECEIVED = 10,
+  Exchange_DataType_MOUSE_MOVE = 11,
   Exchange_DataType_Exchange_DataType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
   Exchange_DataType_Exchange_DataType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
 bool Exchange_DataType_IsValid(int value);
 constexpr Exchange_DataType Exchange_DataType_DataType_MIN = Exchange_DataType_HEARTBEAT;
-constexpr Exchange_DataType Exchange_DataType_DataType_MAX = Exchange_DataType_TILE_RECEIVED;
+constexpr Exchange_DataType Exchange_DataType_DataType_MAX = Exchange_DataType_MOUSE_MOVE;
 constexpr int Exchange_DataType_DataType_ARRAYSIZE = Exchange_DataType_DataType_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Exchange_DataType_descriptor();
@@ -193,6 +198,7 @@ class Exchange PROTOBUF_FINAL :
     kImgParameters = 11,
     kImg = 12,
     kTileReceived = 13,
+    kMouseMove = 14,
     DATABODY_NOT_SET = 0,
   };
 
@@ -285,6 +291,8 @@ class Exchange PROTOBUF_FINAL :
     Exchange_DataType_GIVE_IMG;
   static constexpr DataType TILE_RECEIVED =
     Exchange_DataType_TILE_RECEIVED;
+  static constexpr DataType MOUSE_MOVE =
+    Exchange_DataType_MOUSE_MOVE;
   static inline bool DataType_IsValid(int value) {
     return Exchange_DataType_IsValid(value);
   }
@@ -326,6 +334,7 @@ class Exchange PROTOBUF_FINAL :
     kImgParametersFieldNumber = 11,
     kImgFieldNumber = 12,
     kTileReceivedFieldNumber = 13,
+    kMouseMoveFieldNumber = 14,
   };
   // string resourceID = 2;
   void clear_resourceid();
@@ -544,6 +553,24 @@ class Exchange PROTOBUF_FINAL :
       ::BigPack::APTileReceived* tilereceived);
   ::BigPack::APTileReceived* unsafe_arena_release_tilereceived();
 
+  // .BigPack.APMouseMove mouseMove = 14;
+  bool has_mousemove() const;
+  private:
+  bool _internal_has_mousemove() const;
+  public:
+  void clear_mousemove();
+  const ::BigPack::APMouseMove& mousemove() const;
+  ::BigPack::APMouseMove* release_mousemove();
+  ::BigPack::APMouseMove* mutable_mousemove();
+  void set_allocated_mousemove(::BigPack::APMouseMove* mousemove);
+  private:
+  const ::BigPack::APMouseMove& _internal_mousemove() const;
+  ::BigPack::APMouseMove* _internal_mutable_mousemove();
+  public:
+  void unsafe_arena_set_allocated_mousemove(
+      ::BigPack::APMouseMove* mousemove);
+  ::BigPack::APMouseMove* unsafe_arena_release_mousemove();
+
   void clear_dataBody();
   DataBodyCase dataBody_case() const;
   // @@protoc_insertion_point(class_scope:BigPack.Exchange)
@@ -559,6 +586,7 @@ class Exchange PROTOBUF_FINAL :
   void set_has_imgparameters();
   void set_has_img();
   void set_has_tilereceived();
+  void set_has_mousemove();
 
   inline bool has_dataBody() const;
   inline void clear_has_dataBody();
@@ -582,6 +610,7 @@ class Exchange PROTOBUF_FINAL :
     ::BigPack::CCGiveImgParameters* imgparameters_;
     ::BigPack::CCGiveImg* img_;
     ::BigPack::APTileReceived* tilereceived_;
+    ::BigPack::APMouseMove* mousemove_;
   } dataBody_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::uint32 _oneof_case_[1];
@@ -2167,6 +2196,148 @@ class APTileReceived PROTOBUF_FINAL :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Exchange_2eproto;
 };
+// -------------------------------------------------------------------
+
+class APMouseMove PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:BigPack.APMouseMove) */ {
+ public:
+  inline APMouseMove() : APMouseMove(nullptr) {}
+  ~APMouseMove() override;
+  explicit constexpr APMouseMove(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  APMouseMove(const APMouseMove& from);
+  APMouseMove(APMouseMove&& from) noexcept
+    : APMouseMove() {
+    *this = ::std::move(from);
+  }
+
+  inline APMouseMove& operator=(const APMouseMove& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline APMouseMove& operator=(APMouseMove&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const APMouseMove& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const APMouseMove* internal_default_instance() {
+    return reinterpret_cast<const APMouseMove*>(
+               &_APMouseMove_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    12;
+
+  friend void swap(APMouseMove& a, APMouseMove& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(APMouseMove* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(APMouseMove* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline APMouseMove* New() const final {
+    return CreateMaybeMessage<APMouseMove>(nullptr);
+  }
+
+  APMouseMove* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<APMouseMove>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const APMouseMove& from);
+  void MergeFrom(const APMouseMove& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(APMouseMove* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "BigPack.APMouseMove";
+  }
+  protected:
+  explicit APMouseMove(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kPointXFieldNumber = 1,
+    kPointYFieldNumber = 2,
+  };
+  // int32 pointX = 1;
+  void clear_pointx();
+  ::PROTOBUF_NAMESPACE_ID::int32 pointx() const;
+  void set_pointx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_pointx() const;
+  void _internal_set_pointx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 pointY = 2;
+  void clear_pointy();
+  ::PROTOBUF_NAMESPACE_ID::int32 pointy() const;
+  void set_pointy(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_pointy() const;
+  void _internal_set_pointy(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:BigPack.APMouseMove)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::int32 pointx_;
+  ::PROTOBUF_NAMESPACE_ID::int32 pointy_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Exchange_2eproto;
+};
 // ===================================================================
 
 
@@ -3018,6 +3189,79 @@ inline ::BigPack::APTileReceived* Exchange::mutable_tilereceived() {
   return _internal_mutable_tilereceived();
 }
 
+// .BigPack.APMouseMove mouseMove = 14;
+inline bool Exchange::_internal_has_mousemove() const {
+  return dataBody_case() == kMouseMove;
+}
+inline bool Exchange::has_mousemove() const {
+  return _internal_has_mousemove();
+}
+inline void Exchange::set_has_mousemove() {
+  _oneof_case_[0] = kMouseMove;
+}
+inline void Exchange::clear_mousemove() {
+  if (_internal_has_mousemove()) {
+    if (GetArena() == nullptr) {
+      delete dataBody_.mousemove_;
+    }
+    clear_has_dataBody();
+  }
+}
+inline ::BigPack::APMouseMove* Exchange::release_mousemove() {
+  // @@protoc_insertion_point(field_release:BigPack.Exchange.mouseMove)
+  if (_internal_has_mousemove()) {
+    clear_has_dataBody();
+      ::BigPack::APMouseMove* temp = dataBody_.mousemove_;
+    if (GetArena() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    dataBody_.mousemove_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::BigPack::APMouseMove& Exchange::_internal_mousemove() const {
+  return _internal_has_mousemove()
+      ? *dataBody_.mousemove_
+      : reinterpret_cast< ::BigPack::APMouseMove&>(::BigPack::_APMouseMove_default_instance_);
+}
+inline const ::BigPack::APMouseMove& Exchange::mousemove() const {
+  // @@protoc_insertion_point(field_get:BigPack.Exchange.mouseMove)
+  return _internal_mousemove();
+}
+inline ::BigPack::APMouseMove* Exchange::unsafe_arena_release_mousemove() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:BigPack.Exchange.mouseMove)
+  if (_internal_has_mousemove()) {
+    clear_has_dataBody();
+    ::BigPack::APMouseMove* temp = dataBody_.mousemove_;
+    dataBody_.mousemove_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void Exchange::unsafe_arena_set_allocated_mousemove(::BigPack::APMouseMove* mousemove) {
+  clear_dataBody();
+  if (mousemove) {
+    set_has_mousemove();
+    dataBody_.mousemove_ = mousemove;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:BigPack.Exchange.mouseMove)
+}
+inline ::BigPack::APMouseMove* Exchange::_internal_mutable_mousemove() {
+  if (!_internal_has_mousemove()) {
+    clear_dataBody();
+    set_has_mousemove();
+    dataBody_.mousemove_ = CreateMaybeMessage< ::BigPack::APMouseMove >(GetArena());
+  }
+  return dataBody_.mousemove_;
+}
+inline ::BigPack::APMouseMove* Exchange::mutable_mousemove() {
+  // @@protoc_insertion_point(field_mutable:BigPack.Exchange.mouseMove)
+  return _internal_mutable_mousemove();
+}
+
 inline bool Exchange::has_dataBody() const {
   return dataBody_case() != DATABODY_NOT_SET;
 }
@@ -3696,9 +3940,55 @@ inline void APTileReceived::set_tilenum(::PROTOBUF_NAMESPACE_ID::int32 value) {
   // @@protoc_insertion_point(field_set:BigPack.APTileReceived.tileNum)
 }
 
+// -------------------------------------------------------------------
+
+// APMouseMove
+
+// int32 pointX = 1;
+inline void APMouseMove::clear_pointx() {
+  pointx_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 APMouseMove::_internal_pointx() const {
+  return pointx_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 APMouseMove::pointx() const {
+  // @@protoc_insertion_point(field_get:BigPack.APMouseMove.pointX)
+  return _internal_pointx();
+}
+inline void APMouseMove::_internal_set_pointx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  pointx_ = value;
+}
+inline void APMouseMove::set_pointx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_pointx(value);
+  // @@protoc_insertion_point(field_set:BigPack.APMouseMove.pointX)
+}
+
+// int32 pointY = 2;
+inline void APMouseMove::clear_pointy() {
+  pointy_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 APMouseMove::_internal_pointy() const {
+  return pointy_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 APMouseMove::pointy() const {
+  // @@protoc_insertion_point(field_get:BigPack.APMouseMove.pointY)
+  return _internal_pointy();
+}
+inline void APMouseMove::_internal_set_pointy(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  pointy_ = value;
+}
+inline void APMouseMove::set_pointy(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_pointy(value);
+  // @@protoc_insertion_point(field_set:BigPack.APMouseMove.pointY)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
