@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>QtyDesk</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QWidget" name="panel_left" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>250</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>250</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:white ;</string>
+      </property>
+      <widget class="QLabel" name="label_title">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>10</y>
+         <width>130</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>设备桌面</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_title2">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>60</y>
+         <width>220</width>
+         <height>60</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(136, 136, 136);</string>
+       </property>
+       <property name="text">
+        <string>设备桌面可以通过下面的ID和密码访问。</string>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QWidget" name="panel_id" native="true">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>170</y>
+         <width>211</width>
+         <height>91</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QWidget#panel_id{
+background:white ;
+background-image: url(:/img/images/xun.png);
+background-repeat: no-repeat
+}</string>
+       </property>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>10</y>
+          <width>68</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+color: rgb(102, 102, 102)</string>
+        </property>
+        <property name="text">
+         <string>ID</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="lb_showDeviceId">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>30</y>
+          <width>181</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>--- --- ---</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="bt_settings">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>10</y>
+          <width>30</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+border-image: url(:/img/images/more.png);
+border-radius:15px;
+}
+QPushButton:pressed
+{
+ background-color:rgb(238 , 238 , 238);
+}
+
+QPushButton::menu-indicator{image:none}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="panel_pass" native="true">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>280</y>
+         <width>211</width>
+         <height>91</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QWidget#panel_pass{
+background:white ;
+background-image: url(:/img/images/xun.png);
+background-repeat: no-repeat
+}</string>
+       </property>
+       <widget class="QLabel" name="lb_passwd">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>50</y>
+          <width>101</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>*** ***</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>10</y>
+          <width>68</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+color: rgb(102, 102, 102)</string>
+        </property>
+        <property name="text">
+         <string>验证码</string>
+        </property>
+       </widget>
+       <widget class="BtnShowPasswd" name="bt_eye">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>10</y>
+          <width>31</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/img/images/eye.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="BtnPassSetting" name="bt_changePasswd">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>10</y>
+          <width>30</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+QPushButton{
+border-radius:15px;
+border-image: url(:/img/images/pen.png);
+}
+QPushButton:pressed
+{
+ background-color:rgb(238 , 238 , 238);
+}
+QPushButton::menu-indicator{image:none}
+</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="panel_right" native="true">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QWidget" name="panel_aup" native="true">
+         <widget class="QWidget" name="content" native="true">
+          <property name="geometry">
+           <rect>
+            <x>25</x>
+            <y>30</y>
+            <width>390</width>
+            <height>380</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QWidget#content{
+background-color: rgb(255, 255, 255);
+border-radius:15px ;
+}
+</string>
+          </property>
+          <widget class="QLabel" name="label">
+           <property name="geometry">
+            <rect>
+             <x>50</x>
+             <y>20</y>
+             <width>161</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>控制远程设备</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="ed_remoteID">
+           <property name="geometry">
+            <rect>
+             <x>50</x>
+             <y>120</y>
+             <width>300</width>
+             <height>48</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit:focus{
+border:4px solid rgb(44,140,255);
+}
+
+</string>
+           </property>
+           <property name="maxLength">
+            <number>15</number>
+           </property>
+           <property name="clearButtonEnabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_2">
+           <property name="geometry">
+            <rect>
+             <x>50</x>
+             <y>80</y>
+             <width>131</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>伙伴识别码</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_3">
+           <property name="geometry">
+            <rect>
+             <x>50</x>
+             <y>190</y>
+             <width>131</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>验证码</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="ed_remotePass">
+           <property name="geometry">
+            <rect>
+             <x>50</x>
+             <y>230</y>
+             <width>300</width>
+             <height>48</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit:focus{
+border:4px solid rgb(44,140,255);
+}
+
+</string>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="bt_connectRemoteDevice">
+           <property name="geometry">
+            <rect>
+             <x>150</x>
+             <y>310</y>
+             <width>90</width>
+             <height>40</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+color:white;
+border:1px groove gray;
+padding:1px 2px;
+background-color: rgb(44,140,255);                   
+border-radius:10px;  
+}
+QPushButton:pressed
+{
+background-color:rgb(0 , 113 , 255);
+}</string>
+           </property>
+           <property name="text">
+            <string>远程协助</string>
+           </property>
+          </widget>
+         </widget>
+         <widget class="Line" name="line">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>420</y>
+            <width>8888</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="panel_down" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <widget class="QPushButton" name="bt_lamp">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>10</y>
+            <width>20</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+background-color: rgb(245,133,59);                   
+border-radius:10px;  
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lb_connect_state">
+          <property name="geometry">
+           <rect>
+            <x>60</x>
+            <y>5</y>
+            <width>451</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Arial</family>
+            <pointsize>10</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>正在接入QtyDesk网络。。。</string>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>BtnShowPasswd</class>
+   <extends>QPushButton</extends>
+   <header>ui/button/btnshowpasswd.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BtnPassSetting</class>
+   <extends>QPushButton</extends>
+   <header location="global">ui/button/btnpasssetting.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

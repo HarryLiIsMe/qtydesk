@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>images/error.png</file>
+        <file>images/eye.png</file>
+        <file>images/favicon.ico</file>
+        <file>images/key.png</file>
+        <file>images/more.png</file>
+        <file>images/pen.png</file>
+        <file>images/tv.png</file>
+        <file>images/xun.png</file>
+    </qresource>
+    <qresource prefix="/qs">
+        <file>qsss/menu.qss</file>
+    </qresource>
+</RCC>
