@@ -187,8 +187,46 @@ struct APMouseMoveDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT APMouseMoveDefaultTypeInternal _APMouseMove_default_instance_;
+constexpr APMouseKey::APMouseKey(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : keycode_(0)
+  , state_(false){}
+struct APMouseKeyDefaultTypeInternal {
+  constexpr APMouseKeyDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~APMouseKeyDefaultTypeInternal() {}
+  union {
+    APMouseKey _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT APMouseKeyDefaultTypeInternal _APMouseKey_default_instance_;
+constexpr APWheelEvent::APWheelEvent(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : deltapos_(false){}
+struct APWheelEventDefaultTypeInternal {
+  constexpr APWheelEventDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~APWheelEventDefaultTypeInternal() {}
+  union {
+    APWheelEvent _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT APWheelEventDefaultTypeInternal _APWheelEvent_default_instance_;
+constexpr APKeyboard::APKeyboard(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : keycode_(0)
+  , state_(false){}
+struct APKeyboardDefaultTypeInternal {
+  constexpr APKeyboardDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~APKeyboardDefaultTypeInternal() {}
+  union {
+    APKeyboard _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT APKeyboardDefaultTypeInternal _APKeyboard_default_instance_;
 }  // namespace BigPack
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_Exchange_2eproto[13];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_Exchange_2eproto[16];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_Exchange_2eproto[1];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_Exchange_2eproto = nullptr;
 
@@ -201,6 +239,9 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Exchange_2eproto::offsets[] PR
   PROTOBUF_FIELD_OFFSET(::BigPack::Exchange, datatype_),
   PROTOBUF_FIELD_OFFSET(::BigPack::Exchange, resourceid_),
   PROTOBUF_FIELD_OFFSET(::BigPack::Exchange, targetid_),
+  ::PROTOBUF_NAMESPACE_ID::internal::kInvalidFieldOffsetTag,
+  ::PROTOBUF_NAMESPACE_ID::internal::kInvalidFieldOffsetTag,
+  ::PROTOBUF_NAMESPACE_ID::internal::kInvalidFieldOffsetTag,
   ::PROTOBUF_NAMESPACE_ID::internal::kInvalidFieldOffsetTag,
   ::PROTOBUF_NAMESPACE_ID::internal::kInvalidFieldOffsetTag,
   ::PROTOBUF_NAMESPACE_ID::internal::kInvalidFieldOffsetTag,
@@ -295,21 +336,44 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Exchange_2eproto::offsets[] PR
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::BigPack::APMouseMove, pointx_),
   PROTOBUF_FIELD_OFFSET(::BigPack::APMouseMove, pointy_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::BigPack::APMouseKey, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::BigPack::APMouseKey, keycode_),
+  PROTOBUF_FIELD_OFFSET(::BigPack::APMouseKey, state_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::BigPack::APWheelEvent, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::BigPack::APWheelEvent, deltapos_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::BigPack::APKeyboard, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::BigPack::APKeyboard, keycode_),
+  PROTOBUF_FIELD_OFFSET(::BigPack::APKeyboard, state_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::BigPack::Exchange)},
-  { 20, -1, sizeof(::BigPack::WMHeartbeat)},
-  { 25, -1, sizeof(::BigPack::CsRegisterHost)},
-  { 35, -1, sizeof(::BigPack::ScReplyRegister)},
-  { 42, -1, sizeof(::BigPack::CsQueryHost)},
-  { 47, -1, sizeof(::BigPack::ScReplyQuery)},
-  { 54, -1, sizeof(::BigPack::CCRequestAuth)},
-  { 60, -1, sizeof(::BigPack::CCResponseAuth)},
-  { 67, -1, sizeof(::BigPack::CCGetDesktop)},
-  { 72, -1, sizeof(::BigPack::CCGiveImgParameters)},
-  { 80, -1, sizeof(::BigPack::CCGiveImg)},
-  { 89, -1, sizeof(::BigPack::APTileReceived)},
-  { 95, -1, sizeof(::BigPack::APMouseMove)},
+  { 23, -1, sizeof(::BigPack::WMHeartbeat)},
+  { 28, -1, sizeof(::BigPack::CsRegisterHost)},
+  { 38, -1, sizeof(::BigPack::ScReplyRegister)},
+  { 45, -1, sizeof(::BigPack::CsQueryHost)},
+  { 50, -1, sizeof(::BigPack::ScReplyQuery)},
+  { 57, -1, sizeof(::BigPack::CCRequestAuth)},
+  { 63, -1, sizeof(::BigPack::CCResponseAuth)},
+  { 70, -1, sizeof(::BigPack::CCGetDesktop)},
+  { 75, -1, sizeof(::BigPack::CCGiveImgParameters)},
+  { 83, -1, sizeof(::BigPack::CCGiveImg)},
+  { 92, -1, sizeof(::BigPack::APTileReceived)},
+  { 98, -1, sizeof(::BigPack::APMouseMove)},
+  { 105, -1, sizeof(::BigPack::APMouseKey)},
+  { 112, -1, sizeof(::BigPack::APWheelEvent)},
+  { 118, -1, sizeof(::BigPack::APKeyboard)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -326,10 +390,13 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::BigPack::_CCGiveImg_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::BigPack::_APTileReceived_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::BigPack::_APMouseMove_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::BigPack::_APMouseKey_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::BigPack::_APWheelEvent_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::BigPack::_APKeyboard_default_instance_),
 };
 
 const char descriptor_table_protodef_Exchange_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\016Exchange.proto\022\007BigPack\"\272\006\n\010Exchange\022,"
+  "\n\016Exchange.proto\022\007BigPack\"\350\007\n\010Exchange\022,"
   "\n\010dataType\030\001 \001(\0162\032.BigPack.Exchange.Data"
   "Type\022\022\n\nresourceID\030\002 \001(\t\022\020\n\010targetID\030\003 \001"
   "(\t\022+\n\010hostInfo\030\004 \001(\0132\027.BigPack.CsRegiste"
@@ -344,33 +411,41 @@ const char descriptor_table_protodef_Exchange_2eproto[] PROTOBUF_SECTION_VARIABL
   "iveImgParametersH\000\022!\n\003img\030\014 \001(\0132\022.BigPac"
   "k.CCGiveImgH\000\022/\n\014tileReceived\030\r \001(\0132\027.Bi"
   "gPack.APTileReceivedH\000\022)\n\tmouseMove\030\016 \001("
-  "\0132\024.BigPack.APMouseMoveH\000\"\326\001\n\010DataType\022\r"
-  "\n\tHEARTBEAT\020\000\022\014\n\010REGISTER\020\001\022\022\n\016REPLY_REG"
-  "ISTER\020\002\022\016\n\nQUERY_HOST\020\003\022\017\n\013REPLY_QUERY\020\004"
-  "\022\020\n\014REQUEST_AUTH\020\005\022\021\n\rRESPONSE_AUTH\020\006\022\017\n"
-  "\013GET_DESKTOP\020\007\022\021\n\rGIVE_IMG_PARA\020\010\022\014\n\010GIV"
-  "E_IMG\020\t\022\021\n\rTILE_RECEIVED\020\n\022\016\n\nMOUSE_MOVE"
-  "\020\013B\n\n\010dataBody\"\r\n\013WMHeartbeat\"^\n\016CsRegis"
-  "terHost\022\r\n\005cpuID\030\001 \001(\t\022\020\n\010deviceID\030\002 \001(\t"
-  "\022\013\n\003mac\030\003 \001(\t\022\020\n\010uniqueID\030\004 \001(\t\022\014\n\004type\030"
-  "\005 \001(\005\"6\n\017ScReplyRegister\022\017\n\007success\030\001 \001("
-  "\010\022\022\n\nregisterId\030\002 \001(\t\"\r\n\013CsQueryHost\"8\n\014"
-  "ScReplyQuery\022\022\n\nifExitHost\030\001 \001(\010\022\024\n\014quer"
-  "yMessage\030\002 \001(\t\"!\n\rCCRequestAuth\022\020\n\010authP"
-  "ass\030\001 \001(\t\"/\n\016CCResponseAuth\022\017\n\007success\030\001"
-  " \001(\010\022\014\n\004info\030\002 \001(\t\"\016\n\014CCGetDesktop\"G\n\023CC"
-  "GiveImgParameters\022\r\n\005width\030\001 \001(\005\022\016\n\006heig"
-  "ht\030\002 \001(\005\022\021\n\trectWidth\030\003 \001(\005\"I\n\tCCGiveImg"
-  "\022\014\n\004posX\030\001 \001(\005\022\014\n\004posY\030\002 \001(\005\022\017\n\007tileNum\030"
-  "\003 \001(\005\022\017\n\007imgData\030\004 \001(\014\"!\n\016APTileReceived"
-  "\022\017\n\007tileNum\030\001 \001(\005\"-\n\013APMouseMove\022\016\n\006poin"
-  "tX\030\001 \001(\005\022\016\n\006pointY\030\002 \001(\005B%\n\030com.javacgo."
-  "qty.protocolB\007BigPackH\001b\006proto3"
+  "\0132\024.BigPack.APMouseMoveH\000\022\'\n\010mouseKey\030\017 "
+  "\001(\0132\023.BigPack.APMouseKeyH\000\022+\n\nwheelEvent"
+  "\030\020 \001(\0132\025.BigPack.APWheelEventH\000\022\'\n\010keybo"
+  "ard\030\021 \001(\0132\023.BigPack.APKeyboardH\000\"\205\002\n\010Dat"
+  "aType\022\r\n\tHEARTBEAT\020\000\022\014\n\010REGISTER\020\001\022\022\n\016RE"
+  "PLY_REGISTER\020\002\022\016\n\nQUERY_HOST\020\003\022\017\n\013REPLY_"
+  "QUERY\020\004\022\020\n\014REQUEST_AUTH\020\005\022\021\n\rRESPONSE_AU"
+  "TH\020\006\022\017\n\013GET_DESKTOP\020\007\022\021\n\rGIVE_IMG_PARA\020\010"
+  "\022\014\n\010GIVE_IMG\020\t\022\021\n\rTILE_RECEIVED\020\n\022\016\n\nMOU"
+  "SE_MOVE\020\013\022\r\n\tMOUSE_KEY\020\014\022\017\n\013WHEEL_EVENT\020"
+  "\r\022\r\n\tKEY_BOARD\020\016B\n\n\010dataBody\"\r\n\013WMHeartb"
+  "eat\"^\n\016CsRegisterHost\022\r\n\005cpuID\030\001 \001(\t\022\020\n\010"
+  "deviceID\030\002 \001(\t\022\013\n\003mac\030\003 \001(\t\022\020\n\010uniqueID\030"
+  "\004 \001(\t\022\014\n\004type\030\005 \001(\005\"6\n\017ScReplyRegister\022\017"
+  "\n\007success\030\001 \001(\010\022\022\n\nregisterId\030\002 \001(\t\"\r\n\013C"
+  "sQueryHost\"8\n\014ScReplyQuery\022\022\n\nifExitHost"
+  "\030\001 \001(\010\022\024\n\014queryMessage\030\002 \001(\t\"!\n\rCCReques"
+  "tAuth\022\020\n\010authPass\030\001 \001(\t\"/\n\016CCResponseAut"
+  "h\022\017\n\007success\030\001 \001(\010\022\014\n\004info\030\002 \001(\t\"\016\n\014CCGe"
+  "tDesktop\"G\n\023CCGiveImgParameters\022\r\n\005width"
+  "\030\001 \001(\005\022\016\n\006height\030\002 \001(\005\022\021\n\trectWidth\030\003 \001("
+  "\005\"I\n\tCCGiveImg\022\014\n\004posX\030\001 \001(\005\022\014\n\004posY\030\002 \001"
+  "(\005\022\017\n\007tileNum\030\003 \001(\005\022\017\n\007imgData\030\004 \001(\014\"!\n\016"
+  "APTileReceived\022\017\n\007tileNum\030\001 \001(\005\"-\n\013APMou"
+  "seMove\022\016\n\006pointX\030\001 \001(\005\022\016\n\006pointY\030\002 \001(\005\","
+  "\n\nAPMouseKey\022\017\n\007keyCode\030\001 \001(\005\022\r\n\005state\030\002"
+  " \001(\010\" \n\014APWheelEvent\022\020\n\010deltaPos\030\001 \001(\010\","
+  "\n\nAPKeyboard\022\017\n\007keyCode\030\001 \001(\005\022\r\n\005state\030\002"
+  " \001(\010B%\n\030com.javacgo.qty.protocolB\007BigPac"
+  "kH\001b\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Exchange_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Exchange_2eproto = {
-  false, false, 1471, descriptor_table_protodef_Exchange_2eproto, "Exchange.proto", 
-  &descriptor_table_Exchange_2eproto_once, nullptr, 0, 13,
+  false, false, 1771, descriptor_table_protodef_Exchange_2eproto, "Exchange.proto", 
+  &descriptor_table_Exchange_2eproto_once, nullptr, 0, 16,
   schemas, file_default_instances, TableStruct_Exchange_2eproto::offsets,
   file_level_metadata_Exchange_2eproto, file_level_enum_descriptors_Exchange_2eproto, file_level_service_descriptors_Exchange_2eproto,
 };
@@ -399,6 +474,9 @@ bool Exchange_DataType_IsValid(int value) {
     case 9:
     case 10:
     case 11:
+    case 12:
+    case 13:
+    case 14:
       return true;
     default:
       return false;
@@ -418,6 +496,9 @@ constexpr Exchange_DataType Exchange::GIVE_IMG_PARA;
 constexpr Exchange_DataType Exchange::GIVE_IMG;
 constexpr Exchange_DataType Exchange::TILE_RECEIVED;
 constexpr Exchange_DataType Exchange::MOUSE_MOVE;
+constexpr Exchange_DataType Exchange::MOUSE_KEY;
+constexpr Exchange_DataType Exchange::WHEEL_EVENT;
+constexpr Exchange_DataType Exchange::KEY_BOARD;
 constexpr Exchange_DataType Exchange::DataType_MIN;
 constexpr Exchange_DataType Exchange::DataType_MAX;
 constexpr int Exchange::DataType_ARRAYSIZE;
@@ -438,6 +519,9 @@ class Exchange::_Internal {
   static const ::BigPack::CCGiveImg& img(const Exchange* msg);
   static const ::BigPack::APTileReceived& tilereceived(const Exchange* msg);
   static const ::BigPack::APMouseMove& mousemove(const Exchange* msg);
+  static const ::BigPack::APMouseKey& mousekey(const Exchange* msg);
+  static const ::BigPack::APWheelEvent& wheelevent(const Exchange* msg);
+  static const ::BigPack::APKeyboard& keyboard(const Exchange* msg);
 };
 
 const ::BigPack::CsRegisterHost&
@@ -483,6 +567,18 @@ Exchange::_Internal::tilereceived(const Exchange* msg) {
 const ::BigPack::APMouseMove&
 Exchange::_Internal::mousemove(const Exchange* msg) {
   return *msg->dataBody_.mousemove_;
+}
+const ::BigPack::APMouseKey&
+Exchange::_Internal::mousekey(const Exchange* msg) {
+  return *msg->dataBody_.mousekey_;
+}
+const ::BigPack::APWheelEvent&
+Exchange::_Internal::wheelevent(const Exchange* msg) {
+  return *msg->dataBody_.wheelevent_;
+}
+const ::BigPack::APKeyboard&
+Exchange::_Internal::keyboard(const Exchange* msg) {
+  return *msg->dataBody_.keyboard_;
 }
 void Exchange::set_allocated_hostinfo(::BigPack::CsRegisterHost* hostinfo) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
@@ -649,6 +745,51 @@ void Exchange::set_allocated_mousemove(::BigPack::APMouseMove* mousemove) {
   }
   // @@protoc_insertion_point(field_set_allocated:BigPack.Exchange.mouseMove)
 }
+void Exchange::set_allocated_mousekey(::BigPack::APMouseKey* mousekey) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  clear_dataBody();
+  if (mousekey) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(mousekey);
+    if (message_arena != submessage_arena) {
+      mousekey = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, mousekey, submessage_arena);
+    }
+    set_has_mousekey();
+    dataBody_.mousekey_ = mousekey;
+  }
+  // @@protoc_insertion_point(field_set_allocated:BigPack.Exchange.mouseKey)
+}
+void Exchange::set_allocated_wheelevent(::BigPack::APWheelEvent* wheelevent) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  clear_dataBody();
+  if (wheelevent) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(wheelevent);
+    if (message_arena != submessage_arena) {
+      wheelevent = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, wheelevent, submessage_arena);
+    }
+    set_has_wheelevent();
+    dataBody_.wheelevent_ = wheelevent;
+  }
+  // @@protoc_insertion_point(field_set_allocated:BigPack.Exchange.wheelEvent)
+}
+void Exchange::set_allocated_keyboard(::BigPack::APKeyboard* keyboard) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  clear_dataBody();
+  if (keyboard) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(keyboard);
+    if (message_arena != submessage_arena) {
+      keyboard = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, keyboard, submessage_arena);
+    }
+    set_has_keyboard();
+    dataBody_.keyboard_ = keyboard;
+  }
+  // @@protoc_insertion_point(field_set_allocated:BigPack.Exchange.keyboard)
+}
 Exchange::Exchange(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
@@ -713,6 +854,18 @@ Exchange::Exchange(const Exchange& from)
     }
     case kMouseMove: {
       _internal_mutable_mousemove()->::BigPack::APMouseMove::MergeFrom(from._internal_mousemove());
+      break;
+    }
+    case kMouseKey: {
+      _internal_mutable_mousekey()->::BigPack::APMouseKey::MergeFrom(from._internal_mousekey());
+      break;
+    }
+    case kWheelEvent: {
+      _internal_mutable_wheelevent()->::BigPack::APWheelEvent::MergeFrom(from._internal_wheelevent());
+      break;
+    }
+    case kKeyboard: {
+      _internal_mutable_keyboard()->::BigPack::APKeyboard::MergeFrom(from._internal_keyboard());
       break;
     }
     case DATABODY_NOT_SET: {
@@ -820,6 +973,24 @@ void Exchange::clear_dataBody() {
     case kMouseMove: {
       if (GetArena() == nullptr) {
         delete dataBody_.mousemove_;
+      }
+      break;
+    }
+    case kMouseKey: {
+      if (GetArena() == nullptr) {
+        delete dataBody_.mousekey_;
+      }
+      break;
+    }
+    case kWheelEvent: {
+      if (GetArena() == nullptr) {
+        delete dataBody_.wheelevent_;
+      }
+      break;
+    }
+    case kKeyboard: {
+      if (GetArena() == nullptr) {
+        delete dataBody_.keyboard_;
       }
       break;
     }
@@ -950,6 +1121,27 @@ const char* Exchange::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
       case 14:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 114)) {
           ptr = ctx->ParseMessage(_internal_mutable_mousemove(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .BigPack.APMouseKey mouseKey = 15;
+      case 15:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 122)) {
+          ptr = ctx->ParseMessage(_internal_mutable_mousekey(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .BigPack.APWheelEvent wheelEvent = 16;
+      case 16:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 130)) {
+          ptr = ctx->ParseMessage(_internal_mutable_wheelevent(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .BigPack.APKeyboard keyboard = 17;
+      case 17:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 138)) {
+          ptr = ctx->ParseMessage(_internal_mutable_keyboard(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1097,6 +1289,30 @@ failure:
         14, _Internal::mousemove(this), target, stream);
   }
 
+  // .BigPack.APMouseKey mouseKey = 15;
+  if (_internal_has_mousekey()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        15, _Internal::mousekey(this), target, stream);
+  }
+
+  // .BigPack.APWheelEvent wheelEvent = 16;
+  if (_internal_has_wheelevent()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        16, _Internal::wheelevent(this), target, stream);
+  }
+
+  // .BigPack.APKeyboard keyboard = 17;
+  if (_internal_has_keyboard()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        17, _Internal::keyboard(this), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1211,6 +1427,27 @@ size_t Exchange::ByteSizeLong() const {
           *dataBody_.mousemove_);
       break;
     }
+    // .BigPack.APMouseKey mouseKey = 15;
+    case kMouseKey: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *dataBody_.mousekey_);
+      break;
+    }
+    // .BigPack.APWheelEvent wheelEvent = 16;
+    case kWheelEvent: {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *dataBody_.wheelevent_);
+      break;
+    }
+    // .BigPack.APKeyboard keyboard = 17;
+    case kKeyboard: {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *dataBody_.keyboard_);
+      break;
+    }
     case DATABODY_NOT_SET: {
       break;
     }
@@ -1298,6 +1535,18 @@ void Exchange::MergeFrom(const Exchange& from) {
     }
     case kMouseMove: {
       _internal_mutable_mousemove()->::BigPack::APMouseMove::MergeFrom(from._internal_mousemove());
+      break;
+    }
+    case kMouseKey: {
+      _internal_mutable_mousekey()->::BigPack::APMouseKey::MergeFrom(from._internal_mousekey());
+      break;
+    }
+    case kWheelEvent: {
+      _internal_mutable_wheelevent()->::BigPack::APWheelEvent::MergeFrom(from._internal_wheelevent());
+      break;
+    }
+    case kKeyboard: {
+      _internal_mutable_keyboard()->::BigPack::APKeyboard::MergeFrom(from._internal_keyboard());
       break;
     }
     case DATABODY_NOT_SET: {
@@ -3979,6 +4228,640 @@ void APMouseMove::InternalSwap(APMouseMove* other) {
       file_level_metadata_Exchange_2eproto[12]);
 }
 
+// ===================================================================
+
+class APMouseKey::_Internal {
+ public:
+};
+
+APMouseKey::APMouseKey(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:BigPack.APMouseKey)
+}
+APMouseKey::APMouseKey(const APMouseKey& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&keycode_, &from.keycode_,
+    static_cast<size_t>(reinterpret_cast<char*>(&state_) -
+    reinterpret_cast<char*>(&keycode_)) + sizeof(state_));
+  // @@protoc_insertion_point(copy_constructor:BigPack.APMouseKey)
+}
+
+void APMouseKey::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&keycode_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&state_) -
+    reinterpret_cast<char*>(&keycode_)) + sizeof(state_));
+}
+
+APMouseKey::~APMouseKey() {
+  // @@protoc_insertion_point(destructor:BigPack.APMouseKey)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void APMouseKey::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+}
+
+void APMouseKey::ArenaDtor(void* object) {
+  APMouseKey* _this = reinterpret_cast< APMouseKey* >(object);
+  (void)_this;
+}
+void APMouseKey::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void APMouseKey::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void APMouseKey::Clear() {
+// @@protoc_insertion_point(message_clear_start:BigPack.APMouseKey)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&keycode_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&state_) -
+      reinterpret_cast<char*>(&keycode_)) + sizeof(state_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* APMouseKey::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 keyCode = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          keycode_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // bool state = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          state_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* APMouseKey::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:BigPack.APMouseKey)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 keyCode = 1;
+  if (this->keycode() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_keycode(), target);
+  }
+
+  // bool state = 2;
+  if (this->state() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_state(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:BigPack.APMouseKey)
+  return target;
+}
+
+size_t APMouseKey::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:BigPack.APMouseKey)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 keyCode = 1;
+  if (this->keycode() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_keycode());
+  }
+
+  // bool state = 2;
+  if (this->state() != 0) {
+    total_size += 1 + 1;
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void APMouseKey::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:BigPack.APMouseKey)
+  GOOGLE_DCHECK_NE(&from, this);
+  const APMouseKey* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<APMouseKey>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:BigPack.APMouseKey)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:BigPack.APMouseKey)
+    MergeFrom(*source);
+  }
+}
+
+void APMouseKey::MergeFrom(const APMouseKey& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:BigPack.APMouseKey)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.keycode() != 0) {
+    _internal_set_keycode(from._internal_keycode());
+  }
+  if (from.state() != 0) {
+    _internal_set_state(from._internal_state());
+  }
+}
+
+void APMouseKey::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:BigPack.APMouseKey)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void APMouseKey::CopyFrom(const APMouseKey& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:BigPack.APMouseKey)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool APMouseKey::IsInitialized() const {
+  return true;
+}
+
+void APMouseKey::InternalSwap(APMouseKey* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(APMouseKey, state_)
+      + sizeof(APMouseKey::state_)
+      - PROTOBUF_FIELD_OFFSET(APMouseKey, keycode_)>(
+          reinterpret_cast<char*>(&keycode_),
+          reinterpret_cast<char*>(&other->keycode_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata APMouseKey::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_Exchange_2eproto_getter, &descriptor_table_Exchange_2eproto_once,
+      file_level_metadata_Exchange_2eproto[13]);
+}
+
+// ===================================================================
+
+class APWheelEvent::_Internal {
+ public:
+};
+
+APWheelEvent::APWheelEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:BigPack.APWheelEvent)
+}
+APWheelEvent::APWheelEvent(const APWheelEvent& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  deltapos_ = from.deltapos_;
+  // @@protoc_insertion_point(copy_constructor:BigPack.APWheelEvent)
+}
+
+void APWheelEvent::SharedCtor() {
+deltapos_ = false;
+}
+
+APWheelEvent::~APWheelEvent() {
+  // @@protoc_insertion_point(destructor:BigPack.APWheelEvent)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void APWheelEvent::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+}
+
+void APWheelEvent::ArenaDtor(void* object) {
+  APWheelEvent* _this = reinterpret_cast< APWheelEvent* >(object);
+  (void)_this;
+}
+void APWheelEvent::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void APWheelEvent::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void APWheelEvent::Clear() {
+// @@protoc_insertion_point(message_clear_start:BigPack.APWheelEvent)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  deltapos_ = false;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* APWheelEvent::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // bool deltaPos = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          deltapos_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* APWheelEvent::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:BigPack.APWheelEvent)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool deltaPos = 1;
+  if (this->deltapos() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(1, this->_internal_deltapos(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:BigPack.APWheelEvent)
+  return target;
+}
+
+size_t APWheelEvent::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:BigPack.APWheelEvent)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // bool deltaPos = 1;
+  if (this->deltapos() != 0) {
+    total_size += 1 + 1;
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void APWheelEvent::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:BigPack.APWheelEvent)
+  GOOGLE_DCHECK_NE(&from, this);
+  const APWheelEvent* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<APWheelEvent>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:BigPack.APWheelEvent)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:BigPack.APWheelEvent)
+    MergeFrom(*source);
+  }
+}
+
+void APWheelEvent::MergeFrom(const APWheelEvent& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:BigPack.APWheelEvent)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.deltapos() != 0) {
+    _internal_set_deltapos(from._internal_deltapos());
+  }
+}
+
+void APWheelEvent::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:BigPack.APWheelEvent)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void APWheelEvent::CopyFrom(const APWheelEvent& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:BigPack.APWheelEvent)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool APWheelEvent::IsInitialized() const {
+  return true;
+}
+
+void APWheelEvent::InternalSwap(APWheelEvent* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  swap(deltapos_, other->deltapos_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata APWheelEvent::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_Exchange_2eproto_getter, &descriptor_table_Exchange_2eproto_once,
+      file_level_metadata_Exchange_2eproto[14]);
+}
+
+// ===================================================================
+
+class APKeyboard::_Internal {
+ public:
+};
+
+APKeyboard::APKeyboard(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:BigPack.APKeyboard)
+}
+APKeyboard::APKeyboard(const APKeyboard& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&keycode_, &from.keycode_,
+    static_cast<size_t>(reinterpret_cast<char*>(&state_) -
+    reinterpret_cast<char*>(&keycode_)) + sizeof(state_));
+  // @@protoc_insertion_point(copy_constructor:BigPack.APKeyboard)
+}
+
+void APKeyboard::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&keycode_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&state_) -
+    reinterpret_cast<char*>(&keycode_)) + sizeof(state_));
+}
+
+APKeyboard::~APKeyboard() {
+  // @@protoc_insertion_point(destructor:BigPack.APKeyboard)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void APKeyboard::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+}
+
+void APKeyboard::ArenaDtor(void* object) {
+  APKeyboard* _this = reinterpret_cast< APKeyboard* >(object);
+  (void)_this;
+}
+void APKeyboard::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void APKeyboard::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void APKeyboard::Clear() {
+// @@protoc_insertion_point(message_clear_start:BigPack.APKeyboard)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&keycode_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&state_) -
+      reinterpret_cast<char*>(&keycode_)) + sizeof(state_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* APKeyboard::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 keyCode = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          keycode_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // bool state = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          state_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* APKeyboard::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:BigPack.APKeyboard)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 keyCode = 1;
+  if (this->keycode() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_keycode(), target);
+  }
+
+  // bool state = 2;
+  if (this->state() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_state(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:BigPack.APKeyboard)
+  return target;
+}
+
+size_t APKeyboard::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:BigPack.APKeyboard)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 keyCode = 1;
+  if (this->keycode() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_keycode());
+  }
+
+  // bool state = 2;
+  if (this->state() != 0) {
+    total_size += 1 + 1;
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void APKeyboard::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:BigPack.APKeyboard)
+  GOOGLE_DCHECK_NE(&from, this);
+  const APKeyboard* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<APKeyboard>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:BigPack.APKeyboard)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:BigPack.APKeyboard)
+    MergeFrom(*source);
+  }
+}
+
+void APKeyboard::MergeFrom(const APKeyboard& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:BigPack.APKeyboard)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.keycode() != 0) {
+    _internal_set_keycode(from._internal_keycode());
+  }
+  if (from.state() != 0) {
+    _internal_set_state(from._internal_state());
+  }
+}
+
+void APKeyboard::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:BigPack.APKeyboard)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void APKeyboard::CopyFrom(const APKeyboard& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:BigPack.APKeyboard)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool APKeyboard::IsInitialized() const {
+  return true;
+}
+
+void APKeyboard::InternalSwap(APKeyboard* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(APKeyboard, state_)
+      + sizeof(APKeyboard::state_)
+      - PROTOBUF_FIELD_OFFSET(APKeyboard, keycode_)>(
+          reinterpret_cast<char*>(&keycode_),
+          reinterpret_cast<char*>(&other->keycode_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata APKeyboard::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_Exchange_2eproto_getter, &descriptor_table_Exchange_2eproto_once,
+      file_level_metadata_Exchange_2eproto[15]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace BigPack
 PROTOBUF_NAMESPACE_OPEN
@@ -4020,6 +4903,15 @@ template<> PROTOBUF_NOINLINE ::BigPack::APTileReceived* Arena::CreateMaybeMessag
 }
 template<> PROTOBUF_NOINLINE ::BigPack::APMouseMove* Arena::CreateMaybeMessage< ::BigPack::APMouseMove >(Arena* arena) {
   return Arena::CreateMessageInternal< ::BigPack::APMouseMove >(arena);
+}
+template<> PROTOBUF_NOINLINE ::BigPack::APMouseKey* Arena::CreateMaybeMessage< ::BigPack::APMouseKey >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::BigPack::APMouseKey >(arena);
+}
+template<> PROTOBUF_NOINLINE ::BigPack::APWheelEvent* Arena::CreateMaybeMessage< ::BigPack::APWheelEvent >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::BigPack::APWheelEvent >(arena);
+}
+template<> PROTOBUF_NOINLINE ::BigPack::APKeyboard* Arena::CreateMaybeMessage< ::BigPack::APKeyboard >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::BigPack::APKeyboard >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

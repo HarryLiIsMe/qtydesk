@@ -68,43 +68,67 @@ void ActiveWindow::mouseMoveEvent(QMouseEvent *event)
 
 void ActiveWindow::mousePressEvent(QMouseEvent *event)
 {
-
+    state = true ;
+    if(event->button() == Qt::LeftButton)
+    {
+        code = 0 ;
+    }
+    else if(event->button() == Qt::MidButton){
+        code = 1 ;
+    }
+    else if(event->button() == Qt::RightButton)
+    {
+        code = 2 ;
+    }
+    emit sendMouseKeys(code,state) ;
 }
 
 void ActiveWindow::mouseReleaseEvent(QMouseEvent *event)
 {
-
+    state = false ;
+    if(event->button() == Qt::LeftButton)
+    {
+        code = 0 ;
+    }
+    else if(event->button() == Qt::MidButton){
+        code = 1 ;
+    }
+    else if(event->button() == Qt::RightButton)
+    {
+        code = 2 ;
+    }
+    emit sendMouseKeys(code,state) ;
 }
 
 void ActiveWindow::wheelEvent(QWheelEvent *event)
 {
-
+    if(event->delta() > 0)// 当滚轮远离使用者时
+    {
+        emit sendWheelEvent(false);
+    }
+    else//当滚轮向使用者方向旋转时
+    {
+        emit sendWheelEvent(true);
+    }
 }
 
 void ActiveWindow::mouseDoubleClickEvent(QMouseEvent *event)
 {
-
+    if(event->button() == Qt::LeftButton){
+        emit sendMouseKeys(0,true) ;
+    }
 }
 
 void ActiveWindow::keyPressEvent(QKeyEvent *event)
 {
-
+    emit sendKeyboard(event->nativeVirtualKey(),false);
 }
 
 void ActiveWindow::keyReleaseEvent(QKeyEvent *event)
 {
-
+    emit sendKeyboard(event->nativeVirtualKey(),true);
 }
 
-//void ActiveWindow::setRemoteID(QString remoteID)
-//{
-//    this->m_remoteID = remoteID;
-//}
-
-//void ActiveWindow::setRemotePass(QString remotePass)
-//{
-//    this->m_remotePass = remotePass ;
-//}
 void ActiveWindow::startActiveHandler(QString remoteIP,int port,QString remoteID,QString remotePass,bool ssl){
     QThread *thread = new QThread;
     m_activeHandler = new ActiveHandler;
@@ -130,9 +154,9 @@ void ActiveWindow::startActiveHandler(QString remoteIP,int port,QString remoteID
 
     //控制事件
     connect(this,SIGNAL(mouseMoveSend(int,int)),m_activeHandler,SLOT(slotSendMouseMove(int,int)));
-    //    connect(this,SIGNAL(sendMouseKeys(int,bool)),activeHandler,SLOT(slotSendMouseKeys(int,bool)));
-    //    connect(this,SIGNAL(sendWheelEvent(bool)),activeHandler,SLOT(slotSendWheelEvent(bool)));
-    //    connect(this,SIGNAL(sendKeyboard(int,bool)),activeHandler,SLOT(slotSendKeyboard(int,bool)));
+    connect(this,SIGNAL(sendMouseKeys(int,bool)),m_activeHandler,SLOT(slotSendMouseKeys(int,bool)));
+    connect(this,SIGNAL(sendWheelEvent(bool)),m_activeHandler,SLOT(slotSendWheelEvent(bool)));
+    connect(this,SIGNAL(sendKeyboard(int,bool)),m_activeHandler,SLOT(slotSendKeyboard(int,bool)));
 
     m_activeHandler->moveToThread(thread);
     thread->start();

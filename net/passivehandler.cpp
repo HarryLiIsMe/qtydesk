@@ -18,8 +18,9 @@ PassiveHandler::PassiveHandler(QObject *parent) : SocketHandler(parent),
     connect(this, &PassiveHandler::receivedTileNum, m_graberClass, &GraberClass::setReceivedTileNum);
 
     //    connect(webSocketHandler, &WebSocketHandler::setKeyPressed, m_inputSimulator, &InputSimulator::simulateKeyboard);
-    //    connect(webSocketHandler, &WebSocketHandler::setMousePressed, m_inputSimulator, &InputSimulator::simulateMouseKeys);
+
     connect(this, &PassiveHandler::setMouseMove, m_inputSimulator, &InputSimulator::simulateMouseMove);
+    connect(this, &PassiveHandler::setMousePressed, m_inputSimulator, &InputSimulator::simulateMouseKeys);
     //    connect(webSocketHandler, &WebSocketHandler::setWheelChanged, m_inputSimulator, &InputSimulator::simulateWheelEvent);
     //    connect(webSocketHandler, &WebSocketHandler::setMouseDelta, m_inputSimulator, &InputSimulator::setMouseDelta);
 
@@ -75,6 +76,11 @@ void PassiveHandler::dealProto(int i,BigPack::Exchange resv_exc){
         emit setMouseMove(x,y);
         break;
     }
+    case BigPack::Exchange::MOUSE_KEY:{
+        int keycode = resv_exc.mousekey().keycode();
+        int state = resv_exc.mousekey().state();
+        emit setMousePressed(keycode,state);
+    }
     }
 }
 void PassiveHandler::setTempPass(const QString &tempPass){
@@ -121,7 +127,6 @@ void PassiveHandler::sendImageTile(quint16 posX, quint16 posY, const QByteArray 
     write_ex.set_datatype(BigPack::Exchange::GIVE_IMG);
     write_ex.set_resourceid(m_transferID.toStdString());
     write_ex.set_allocated_img(img);
-
 
     serializeSend(write_ex);
 }

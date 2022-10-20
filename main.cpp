@@ -3,7 +3,7 @@
 #include "common/log4j.h"
 
 #include <QApplication>
-
+#include <QMessageBox>
 int main(int argc, char *argv[])
 {
     //protobuf启动
@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
     Log4j::userLog(Log4j::CONSOLE);
 
     QApplication app(argc, argv);
+
     app.setQuitOnLastWindowClosed(false);
     MainWindow mw ;
     mw.show();

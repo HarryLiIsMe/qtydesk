@@ -2,11 +2,10 @@
 
 ActiveHandler::ActiveHandler(QObject *parent) : SocketHandler(parent),
     m_remoteID(""),
-    m_remotePass("")
+    m_remotePass(""),
+    m_isAuthenticated(false)
 {
-
 }
-
 void ActiveHandler::dealProto(int i, BigPack::Exchange resv_exc)
 {
     switch(i){
@@ -29,6 +28,7 @@ void ActiveHandler::dealProto(int i, BigPack::Exchange resv_exc)
     }
     case BigPack::Exchange::RESPONSE_AUTH:{
         if(resv_exc.responseauth().success()){
+            m_isAuthenticated = true ;
             GetDesktop();
         }else{
             QString info = QString::fromStdString(resv_exc.responseauth().info());
@@ -118,6 +118,9 @@ void ActiveHandler::sendReceivedTileNum(int tileNum)
 
 void ActiveHandler::slotSendMouseMove(int x, int y)
 {
+    if(!m_isAuthenticated){
+        return ;
+    }
     BigPack::Exchange ex ;
     ex.set_datatype(BigPack::Exchange::MOUSE_MOVE);
     ex.set_resourceid(m_transferID.toStdString()) ;
@@ -128,4 +131,35 @@ void ActiveHandler::slotSendMouseMove(int x, int y)
     mm->set_pointy(y);
     ex.set_allocated_mousemove(mm);
     serializeSend(ex);
+}
+
+void ActiveHandler::slotSendMouseKeys(int code, bool state)
+{
+    if(!m_isAuthenticated){
+        return ;
+    }
+    BigPack::Exchange ex ;
+    ex.set_datatype(BigPack::Exchange::MOUSE_KEY);
+    ex.set_resourceid(m_transferID.toStdString()) ;
+    ex.set_targetid(m_remoteID.toStdString());
+
+    BigPack::APMouseKey *mk = new BigPack::APMouseKey;
+    mk->set_state(state);
+    mk->set_keycode(code);
+    ex.set_allocated_mousekey(mk);
+    serializeSend(ex);
+}
+
+void ActiveHandler::slotSendWheelEvent(bool detal)
+{
+    if(!m_isAuthenticated){
+        return ;
+    }
+}
+
+void ActiveHandler::slotSendKeyboard(int code, bool state)
+{
+    if(!m_isAuthenticated){
+        return ;
+    }
 }

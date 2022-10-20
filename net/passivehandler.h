@@ -20,6 +20,11 @@ signals:
    void receivedTileNum(int tileNum);
 
    void setMouseMove(quint16 posX, quint16 posY);
+   void setMousePressed(quint16 keyCode, bool state);
+   void setWheelChanged(bool deltaPos);
+   void setKeyPressed(quint16 keyCode, bool state);
+   //mouseDelta：上一个鼠标事件与当前鼠标事件之间指针位置的差异。
+   //void setMouseDelta(qint16 deltaX, qint16 deltaY);
 protected:
    void dealProto(int i,BigPack::Exchange resv_exc) override;
 

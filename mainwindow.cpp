@@ -39,14 +39,14 @@ MainWindow::~MainWindow()
     delete ui;
 }
 void MainWindow::loadUIConnect(){
-     connect(ui->bt_eye,&BtnShowPasswd::showPasswd,this,&MainWindow::showPasswd) ;
+    connect(ui->bt_eye,&BtnShowPasswd::showPasswd,this,&MainWindow::showPasswd) ;
 
-     connect(ui->bt_changePasswd,&BtnPassSetting::reflashPasswd,this,&MainWindow::getRandomString) ;
-     connect(ui->bt_changePasswd,&BtnPassSetting::setNewPasswd,this,&MainWindow::showChangePassDialog) ;
-//     connect(ui->bt_changePasswd,&BtnPassSetting::copyPasswd,this,&MainWindow::copyPasswd) ;
+    connect(ui->bt_changePasswd,&BtnPassSetting::reflashPasswd,this,&MainWindow::getRandomString) ;
+    connect(ui->bt_changePasswd,&BtnPassSetting::setNewPasswd,this,&MainWindow::showChangePassDialog) ;
+    //     connect(ui->bt_changePasswd,&BtnPassSetting::copyPasswd,this,&MainWindow::copyPasswd) ;
 
-     //对话框信号 到 主界面处理
-     connect(m_changeDialog,&DlgChangePasswd::setPasswdOk,this,&MainWindow::setTempPassword) ;
+    //对话框信号 到 主界面处理
+    connect(m_changeDialog,&DlgChangePasswd::setPasswdOk,this,&MainWindow::setTempPassword) ;
 }
 void MainWindow::loadTrayMenu()
 {
@@ -104,8 +104,8 @@ void MainWindow::loadSettings()
     QString remoteHost = settings.value("remoteHost").toString();
     if(remoteHost.isEmpty())
     {
-        remoteHost = "localhost";
-        settings.setValue("remoteHost",m_remoteHost);
+        remoteHost = "server.qtydesk.com";
+        settings.setValue("remoteHost",remoteHost);
     }
     m_remoteHost = remoteHost ;
 
@@ -126,14 +126,19 @@ void MainWindow::loadSettings()
         settings.setValue("tempPass",tempPass);
     }
 
-
-    bool ssl = settings.value("ssl").toBool();
-    if(ssl){
-        if (!QSslSocket::supportsSsl()) {
-            QMessageBox::information(0, "Secure Socket Client","This system does not support OpenSSL.");
-        }
+    int ssl = settings.value("ssl",1).toInt();
+    if (!QSslSocket::supportsSsl()) {
+        QMessageBox::information(0, "Secure Socket Client",
+                                 "This system does not support OpenSSL."
+                                 " The program will proceed with an insecure connection");
     }
-    m_ssl = ssl ;
+    if(1 == ssl){
+        m_ssl = true ;
+        settings.setValue("ssl",ssl);
+    }else{
+        QMessageBox::information(0, "Secure Socket Client",
+                                 "The program will proceed with an insecure connection.");
+    }
     settings.endGroup();
     settings.sync();
 
@@ -152,9 +157,9 @@ void MainWindow::startPassiveHandler(const QString &remoteHost, quint16 port,boo
     m_socketHandler->setRemotePort(port);
     m_socketHandler->setTempPass(tempPass);
 
-//    m_socketHandler->setName(name);
-//    m_socketHandler->setLoginPass(login, pass);
-//    m_socketHandler->setProxyLoginPass(proxyLogin, proxyPass);
+    //    m_socketHandler->setName(name);
+    //    m_socketHandler->setLoginPass(login, pass);
+    //    m_socketHandler->setProxyLoginPass(proxyLogin, proxyPass);
     //线程开始,网络处理类创建socket
     connect(thread, &QThread::started, m_socketHandler, &SocketHandler::createSocket);
     connect(this, &MainWindow::closeSignal, m_socketHandler, &SocketHandler::removeSocket);
@@ -192,8 +197,8 @@ void MainWindow::showConnectedStatus(bool showStatus){
 void MainWindow::uiShowDeviceID(QString showID){
     showID = showID.mid(0,3)+" "+ showID.mid(3,3) +" "+ showID.mid(6,3) ;
     ui->lb_showDeviceId->setText(showID);
-//    ui->bt_connectRemoteDevice->setEnabled(true);
-//    ui->lb_showDeviceId->setText(showID);
+    //    ui->bt_connectRemoteDevice->setEnabled(true);
+    //    ui->lb_showDeviceId->setText(showID);
 }
 
 void MainWindow::finishedSockeHandler()
@@ -202,7 +207,7 @@ void MainWindow::finishedSockeHandler()
 
     //if(!m_webSocketTransfer)
     //这里还不能退出，暂时这样处理。
-        QApplication::quit();
+    QApplication::quit();
 }
 
 void MainWindow::showPasswd(bool show)

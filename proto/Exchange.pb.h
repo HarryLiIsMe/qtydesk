@@ -47,7 +47,7 @@ struct TableStruct_Exchange_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[13]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[16]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -55,12 +55,21 @@ struct TableStruct_Exchange_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Exchange_2eproto;
 namespace BigPack {
+class APKeyboard;
+struct APKeyboardDefaultTypeInternal;
+extern APKeyboardDefaultTypeInternal _APKeyboard_default_instance_;
+class APMouseKey;
+struct APMouseKeyDefaultTypeInternal;
+extern APMouseKeyDefaultTypeInternal _APMouseKey_default_instance_;
 class APMouseMove;
 struct APMouseMoveDefaultTypeInternal;
 extern APMouseMoveDefaultTypeInternal _APMouseMove_default_instance_;
 class APTileReceived;
 struct APTileReceivedDefaultTypeInternal;
 extern APTileReceivedDefaultTypeInternal _APTileReceived_default_instance_;
+class APWheelEvent;
+struct APWheelEventDefaultTypeInternal;
+extern APWheelEventDefaultTypeInternal _APWheelEvent_default_instance_;
 class CCGetDesktop;
 struct CCGetDesktopDefaultTypeInternal;
 extern CCGetDesktopDefaultTypeInternal _CCGetDesktop_default_instance_;
@@ -96,8 +105,11 @@ struct WMHeartbeatDefaultTypeInternal;
 extern WMHeartbeatDefaultTypeInternal _WMHeartbeat_default_instance_;
 }  // namespace BigPack
 PROTOBUF_NAMESPACE_OPEN
+template<> ::BigPack::APKeyboard* Arena::CreateMaybeMessage<::BigPack::APKeyboard>(Arena*);
+template<> ::BigPack::APMouseKey* Arena::CreateMaybeMessage<::BigPack::APMouseKey>(Arena*);
 template<> ::BigPack::APMouseMove* Arena::CreateMaybeMessage<::BigPack::APMouseMove>(Arena*);
 template<> ::BigPack::APTileReceived* Arena::CreateMaybeMessage<::BigPack::APTileReceived>(Arena*);
+template<> ::BigPack::APWheelEvent* Arena::CreateMaybeMessage<::BigPack::APWheelEvent>(Arena*);
 template<> ::BigPack::CCGetDesktop* Arena::CreateMaybeMessage<::BigPack::CCGetDesktop>(Arena*);
 template<> ::BigPack::CCGiveImg* Arena::CreateMaybeMessage<::BigPack::CCGiveImg>(Arena*);
 template<> ::BigPack::CCGiveImgParameters* Arena::CreateMaybeMessage<::BigPack::CCGiveImgParameters>(Arena*);
@@ -125,12 +137,15 @@ enum Exchange_DataType : int {
   Exchange_DataType_GIVE_IMG = 9,
   Exchange_DataType_TILE_RECEIVED = 10,
   Exchange_DataType_MOUSE_MOVE = 11,
+  Exchange_DataType_MOUSE_KEY = 12,
+  Exchange_DataType_WHEEL_EVENT = 13,
+  Exchange_DataType_KEY_BOARD = 14,
   Exchange_DataType_Exchange_DataType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
   Exchange_DataType_Exchange_DataType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
 bool Exchange_DataType_IsValid(int value);
 constexpr Exchange_DataType Exchange_DataType_DataType_MIN = Exchange_DataType_HEARTBEAT;
-constexpr Exchange_DataType Exchange_DataType_DataType_MAX = Exchange_DataType_MOUSE_MOVE;
+constexpr Exchange_DataType Exchange_DataType_DataType_MAX = Exchange_DataType_KEY_BOARD;
 constexpr int Exchange_DataType_DataType_ARRAYSIZE = Exchange_DataType_DataType_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Exchange_DataType_descriptor();
@@ -199,6 +214,9 @@ class Exchange PROTOBUF_FINAL :
     kImg = 12,
     kTileReceived = 13,
     kMouseMove = 14,
+    kMouseKey = 15,
+    kWheelEvent = 16,
+    kKeyboard = 17,
     DATABODY_NOT_SET = 0,
   };
 
@@ -293,6 +311,12 @@ class Exchange PROTOBUF_FINAL :
     Exchange_DataType_TILE_RECEIVED;
   static constexpr DataType MOUSE_MOVE =
     Exchange_DataType_MOUSE_MOVE;
+  static constexpr DataType MOUSE_KEY =
+    Exchange_DataType_MOUSE_KEY;
+  static constexpr DataType WHEEL_EVENT =
+    Exchange_DataType_WHEEL_EVENT;
+  static constexpr DataType KEY_BOARD =
+    Exchange_DataType_KEY_BOARD;
   static inline bool DataType_IsValid(int value) {
     return Exchange_DataType_IsValid(value);
   }
@@ -335,6 +359,9 @@ class Exchange PROTOBUF_FINAL :
     kImgFieldNumber = 12,
     kTileReceivedFieldNumber = 13,
     kMouseMoveFieldNumber = 14,
+    kMouseKeyFieldNumber = 15,
+    kWheelEventFieldNumber = 16,
+    kKeyboardFieldNumber = 17,
   };
   // string resourceID = 2;
   void clear_resourceid();
@@ -571,6 +598,60 @@ class Exchange PROTOBUF_FINAL :
       ::BigPack::APMouseMove* mousemove);
   ::BigPack::APMouseMove* unsafe_arena_release_mousemove();
 
+  // .BigPack.APMouseKey mouseKey = 15;
+  bool has_mousekey() const;
+  private:
+  bool _internal_has_mousekey() const;
+  public:
+  void clear_mousekey();
+  const ::BigPack::APMouseKey& mousekey() const;
+  ::BigPack::APMouseKey* release_mousekey();
+  ::BigPack::APMouseKey* mutable_mousekey();
+  void set_allocated_mousekey(::BigPack::APMouseKey* mousekey);
+  private:
+  const ::BigPack::APMouseKey& _internal_mousekey() const;
+  ::BigPack::APMouseKey* _internal_mutable_mousekey();
+  public:
+  void unsafe_arena_set_allocated_mousekey(
+      ::BigPack::APMouseKey* mousekey);
+  ::BigPack::APMouseKey* unsafe_arena_release_mousekey();
+
+  // .BigPack.APWheelEvent wheelEvent = 16;
+  bool has_wheelevent() const;
+  private:
+  bool _internal_has_wheelevent() const;
+  public:
+  void clear_wheelevent();
+  const ::BigPack::APWheelEvent& wheelevent() const;
+  ::BigPack::APWheelEvent* release_wheelevent();
+  ::BigPack::APWheelEvent* mutable_wheelevent();
+  void set_allocated_wheelevent(::BigPack::APWheelEvent* wheelevent);
+  private:
+  const ::BigPack::APWheelEvent& _internal_wheelevent() const;
+  ::BigPack::APWheelEvent* _internal_mutable_wheelevent();
+  public:
+  void unsafe_arena_set_allocated_wheelevent(
+      ::BigPack::APWheelEvent* wheelevent);
+  ::BigPack::APWheelEvent* unsafe_arena_release_wheelevent();
+
+  // .BigPack.APKeyboard keyboard = 17;
+  bool has_keyboard() const;
+  private:
+  bool _internal_has_keyboard() const;
+  public:
+  void clear_keyboard();
+  const ::BigPack::APKeyboard& keyboard() const;
+  ::BigPack::APKeyboard* release_keyboard();
+  ::BigPack::APKeyboard* mutable_keyboard();
+  void set_allocated_keyboard(::BigPack::APKeyboard* keyboard);
+  private:
+  const ::BigPack::APKeyboard& _internal_keyboard() const;
+  ::BigPack::APKeyboard* _internal_mutable_keyboard();
+  public:
+  void unsafe_arena_set_allocated_keyboard(
+      ::BigPack::APKeyboard* keyboard);
+  ::BigPack::APKeyboard* unsafe_arena_release_keyboard();
+
   void clear_dataBody();
   DataBodyCase dataBody_case() const;
   // @@protoc_insertion_point(class_scope:BigPack.Exchange)
@@ -587,6 +668,9 @@ class Exchange PROTOBUF_FINAL :
   void set_has_img();
   void set_has_tilereceived();
   void set_has_mousemove();
+  void set_has_mousekey();
+  void set_has_wheelevent();
+  void set_has_keyboard();
 
   inline bool has_dataBody() const;
   inline void clear_has_dataBody();
@@ -611,6 +695,9 @@ class Exchange PROTOBUF_FINAL :
     ::BigPack::CCGiveImg* img_;
     ::BigPack::APTileReceived* tilereceived_;
     ::BigPack::APMouseMove* mousemove_;
+    ::BigPack::APMouseKey* mousekey_;
+    ::BigPack::APWheelEvent* wheelevent_;
+    ::BigPack::APKeyboard* keyboard_;
   } dataBody_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::uint32 _oneof_case_[1];
@@ -2338,6 +2425,421 @@ class APMouseMove PROTOBUF_FINAL :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Exchange_2eproto;
 };
+// -------------------------------------------------------------------
+
+class APMouseKey PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:BigPack.APMouseKey) */ {
+ public:
+  inline APMouseKey() : APMouseKey(nullptr) {}
+  ~APMouseKey() override;
+  explicit constexpr APMouseKey(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  APMouseKey(const APMouseKey& from);
+  APMouseKey(APMouseKey&& from) noexcept
+    : APMouseKey() {
+    *this = ::std::move(from);
+  }
+
+  inline APMouseKey& operator=(const APMouseKey& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline APMouseKey& operator=(APMouseKey&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const APMouseKey& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const APMouseKey* internal_default_instance() {
+    return reinterpret_cast<const APMouseKey*>(
+               &_APMouseKey_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    13;
+
+  friend void swap(APMouseKey& a, APMouseKey& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(APMouseKey* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(APMouseKey* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline APMouseKey* New() const final {
+    return CreateMaybeMessage<APMouseKey>(nullptr);
+  }
+
+  APMouseKey* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<APMouseKey>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const APMouseKey& from);
+  void MergeFrom(const APMouseKey& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(APMouseKey* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "BigPack.APMouseKey";
+  }
+  protected:
+  explicit APMouseKey(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKeyCodeFieldNumber = 1,
+    kStateFieldNumber = 2,
+  };
+  // int32 keyCode = 1;
+  void clear_keycode();
+  ::PROTOBUF_NAMESPACE_ID::int32 keycode() const;
+  void set_keycode(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_keycode() const;
+  void _internal_set_keycode(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // bool state = 2;
+  void clear_state();
+  bool state() const;
+  void set_state(bool value);
+  private:
+  bool _internal_state() const;
+  void _internal_set_state(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:BigPack.APMouseKey)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::int32 keycode_;
+  bool state_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Exchange_2eproto;
+};
+// -------------------------------------------------------------------
+
+class APWheelEvent PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:BigPack.APWheelEvent) */ {
+ public:
+  inline APWheelEvent() : APWheelEvent(nullptr) {}
+  ~APWheelEvent() override;
+  explicit constexpr APWheelEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  APWheelEvent(const APWheelEvent& from);
+  APWheelEvent(APWheelEvent&& from) noexcept
+    : APWheelEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline APWheelEvent& operator=(const APWheelEvent& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline APWheelEvent& operator=(APWheelEvent&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const APWheelEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const APWheelEvent* internal_default_instance() {
+    return reinterpret_cast<const APWheelEvent*>(
+               &_APWheelEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    14;
+
+  friend void swap(APWheelEvent& a, APWheelEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(APWheelEvent* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(APWheelEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline APWheelEvent* New() const final {
+    return CreateMaybeMessage<APWheelEvent>(nullptr);
+  }
+
+  APWheelEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<APWheelEvent>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const APWheelEvent& from);
+  void MergeFrom(const APWheelEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(APWheelEvent* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "BigPack.APWheelEvent";
+  }
+  protected:
+  explicit APWheelEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDeltaPosFieldNumber = 1,
+  };
+  // bool deltaPos = 1;
+  void clear_deltapos();
+  bool deltapos() const;
+  void set_deltapos(bool value);
+  private:
+  bool _internal_deltapos() const;
+  void _internal_set_deltapos(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:BigPack.APWheelEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  bool deltapos_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Exchange_2eproto;
+};
+// -------------------------------------------------------------------
+
+class APKeyboard PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:BigPack.APKeyboard) */ {
+ public:
+  inline APKeyboard() : APKeyboard(nullptr) {}
+  ~APKeyboard() override;
+  explicit constexpr APKeyboard(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  APKeyboard(const APKeyboard& from);
+  APKeyboard(APKeyboard&& from) noexcept
+    : APKeyboard() {
+    *this = ::std::move(from);
+  }
+
+  inline APKeyboard& operator=(const APKeyboard& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline APKeyboard& operator=(APKeyboard&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const APKeyboard& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const APKeyboard* internal_default_instance() {
+    return reinterpret_cast<const APKeyboard*>(
+               &_APKeyboard_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    15;
+
+  friend void swap(APKeyboard& a, APKeyboard& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(APKeyboard* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(APKeyboard* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline APKeyboard* New() const final {
+    return CreateMaybeMessage<APKeyboard>(nullptr);
+  }
+
+  APKeyboard* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<APKeyboard>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const APKeyboard& from);
+  void MergeFrom(const APKeyboard& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(APKeyboard* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "BigPack.APKeyboard";
+  }
+  protected:
+  explicit APKeyboard(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKeyCodeFieldNumber = 1,
+    kStateFieldNumber = 2,
+  };
+  // int32 keyCode = 1;
+  void clear_keycode();
+  ::PROTOBUF_NAMESPACE_ID::int32 keycode() const;
+  void set_keycode(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_keycode() const;
+  void _internal_set_keycode(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // bool state = 2;
+  void clear_state();
+  bool state() const;
+  void set_state(bool value);
+  private:
+  bool _internal_state() const;
+  void _internal_set_state(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:BigPack.APKeyboard)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::int32 keycode_;
+  bool state_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Exchange_2eproto;
+};
 // ===================================================================
 
 
@@ -3262,6 +3764,225 @@ inline ::BigPack::APMouseMove* Exchange::mutable_mousemove() {
   return _internal_mutable_mousemove();
 }
 
+// .BigPack.APMouseKey mouseKey = 15;
+inline bool Exchange::_internal_has_mousekey() const {
+  return dataBody_case() == kMouseKey;
+}
+inline bool Exchange::has_mousekey() const {
+  return _internal_has_mousekey();
+}
+inline void Exchange::set_has_mousekey() {
+  _oneof_case_[0] = kMouseKey;
+}
+inline void Exchange::clear_mousekey() {
+  if (_internal_has_mousekey()) {
+    if (GetArena() == nullptr) {
+      delete dataBody_.mousekey_;
+    }
+    clear_has_dataBody();
+  }
+}
+inline ::BigPack::APMouseKey* Exchange::release_mousekey() {
+  // @@protoc_insertion_point(field_release:BigPack.Exchange.mouseKey)
+  if (_internal_has_mousekey()) {
+    clear_has_dataBody();
+      ::BigPack::APMouseKey* temp = dataBody_.mousekey_;
+    if (GetArena() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    dataBody_.mousekey_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::BigPack::APMouseKey& Exchange::_internal_mousekey() const {
+  return _internal_has_mousekey()
+      ? *dataBody_.mousekey_
+      : reinterpret_cast< ::BigPack::APMouseKey&>(::BigPack::_APMouseKey_default_instance_);
+}
+inline const ::BigPack::APMouseKey& Exchange::mousekey() const {
+  // @@protoc_insertion_point(field_get:BigPack.Exchange.mouseKey)
+  return _internal_mousekey();
+}
+inline ::BigPack::APMouseKey* Exchange::unsafe_arena_release_mousekey() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:BigPack.Exchange.mouseKey)
+  if (_internal_has_mousekey()) {
+    clear_has_dataBody();
+    ::BigPack::APMouseKey* temp = dataBody_.mousekey_;
+    dataBody_.mousekey_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void Exchange::unsafe_arena_set_allocated_mousekey(::BigPack::APMouseKey* mousekey) {
+  clear_dataBody();
+  if (mousekey) {
+    set_has_mousekey();
+    dataBody_.mousekey_ = mousekey;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:BigPack.Exchange.mouseKey)
+}
+inline ::BigPack::APMouseKey* Exchange::_internal_mutable_mousekey() {
+  if (!_internal_has_mousekey()) {
+    clear_dataBody();
+    set_has_mousekey();
+    dataBody_.mousekey_ = CreateMaybeMessage< ::BigPack::APMouseKey >(GetArena());
+  }
+  return dataBody_.mousekey_;
+}
+inline ::BigPack::APMouseKey* Exchange::mutable_mousekey() {
+  // @@protoc_insertion_point(field_mutable:BigPack.Exchange.mouseKey)
+  return _internal_mutable_mousekey();
+}
+
+// .BigPack.APWheelEvent wheelEvent = 16;
+inline bool Exchange::_internal_has_wheelevent() const {
+  return dataBody_case() == kWheelEvent;
+}
+inline bool Exchange::has_wheelevent() const {
+  return _internal_has_wheelevent();
+}
+inline void Exchange::set_has_wheelevent() {
+  _oneof_case_[0] = kWheelEvent;
+}
+inline void Exchange::clear_wheelevent() {
+  if (_internal_has_wheelevent()) {
+    if (GetArena() == nullptr) {
+      delete dataBody_.wheelevent_;
+    }
+    clear_has_dataBody();
+  }
+}
+inline ::BigPack::APWheelEvent* Exchange::release_wheelevent() {
+  // @@protoc_insertion_point(field_release:BigPack.Exchange.wheelEvent)
+  if (_internal_has_wheelevent()) {
+    clear_has_dataBody();
+      ::BigPack::APWheelEvent* temp = dataBody_.wheelevent_;
+    if (GetArena() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    dataBody_.wheelevent_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::BigPack::APWheelEvent& Exchange::_internal_wheelevent() const {
+  return _internal_has_wheelevent()
+      ? *dataBody_.wheelevent_
+      : reinterpret_cast< ::BigPack::APWheelEvent&>(::BigPack::_APWheelEvent_default_instance_);
+}
+inline const ::BigPack::APWheelEvent& Exchange::wheelevent() const {
+  // @@protoc_insertion_point(field_get:BigPack.Exchange.wheelEvent)
+  return _internal_wheelevent();
+}
+inline ::BigPack::APWheelEvent* Exchange::unsafe_arena_release_wheelevent() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:BigPack.Exchange.wheelEvent)
+  if (_internal_has_wheelevent()) {
+    clear_has_dataBody();
+    ::BigPack::APWheelEvent* temp = dataBody_.wheelevent_;
+    dataBody_.wheelevent_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void Exchange::unsafe_arena_set_allocated_wheelevent(::BigPack::APWheelEvent* wheelevent) {
+  clear_dataBody();
+  if (wheelevent) {
+    set_has_wheelevent();
+    dataBody_.wheelevent_ = wheelevent;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:BigPack.Exchange.wheelEvent)
+}
+inline ::BigPack::APWheelEvent* Exchange::_internal_mutable_wheelevent() {
+  if (!_internal_has_wheelevent()) {
+    clear_dataBody();
+    set_has_wheelevent();
+    dataBody_.wheelevent_ = CreateMaybeMessage< ::BigPack::APWheelEvent >(GetArena());
+  }
+  return dataBody_.wheelevent_;
+}
+inline ::BigPack::APWheelEvent* Exchange::mutable_wheelevent() {
+  // @@protoc_insertion_point(field_mutable:BigPack.Exchange.wheelEvent)
+  return _internal_mutable_wheelevent();
+}
+
+// .BigPack.APKeyboard keyboard = 17;
+inline bool Exchange::_internal_has_keyboard() const {
+  return dataBody_case() == kKeyboard;
+}
+inline bool Exchange::has_keyboard() const {
+  return _internal_has_keyboard();
+}
+inline void Exchange::set_has_keyboard() {
+  _oneof_case_[0] = kKeyboard;
+}
+inline void Exchange::clear_keyboard() {
+  if (_internal_has_keyboard()) {
+    if (GetArena() == nullptr) {
+      delete dataBody_.keyboard_;
+    }
+    clear_has_dataBody();
+  }
+}
+inline ::BigPack::APKeyboard* Exchange::release_keyboard() {
+  // @@protoc_insertion_point(field_release:BigPack.Exchange.keyboard)
+  if (_internal_has_keyboard()) {
+    clear_has_dataBody();
+      ::BigPack::APKeyboard* temp = dataBody_.keyboard_;
+    if (GetArena() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    dataBody_.keyboard_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::BigPack::APKeyboard& Exchange::_internal_keyboard() const {
+  return _internal_has_keyboard()
+      ? *dataBody_.keyboard_
+      : reinterpret_cast< ::BigPack::APKeyboard&>(::BigPack::_APKeyboard_default_instance_);
+}
+inline const ::BigPack::APKeyboard& Exchange::keyboard() const {
+  // @@protoc_insertion_point(field_get:BigPack.Exchange.keyboard)
+  return _internal_keyboard();
+}
+inline ::BigPack::APKeyboard* Exchange::unsafe_arena_release_keyboard() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:BigPack.Exchange.keyboard)
+  if (_internal_has_keyboard()) {
+    clear_has_dataBody();
+    ::BigPack::APKeyboard* temp = dataBody_.keyboard_;
+    dataBody_.keyboard_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void Exchange::unsafe_arena_set_allocated_keyboard(::BigPack::APKeyboard* keyboard) {
+  clear_dataBody();
+  if (keyboard) {
+    set_has_keyboard();
+    dataBody_.keyboard_ = keyboard;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:BigPack.Exchange.keyboard)
+}
+inline ::BigPack::APKeyboard* Exchange::_internal_mutable_keyboard() {
+  if (!_internal_has_keyboard()) {
+    clear_dataBody();
+    set_has_keyboard();
+    dataBody_.keyboard_ = CreateMaybeMessage< ::BigPack::APKeyboard >(GetArena());
+  }
+  return dataBody_.keyboard_;
+}
+inline ::BigPack::APKeyboard* Exchange::mutable_keyboard() {
+  // @@protoc_insertion_point(field_mutable:BigPack.Exchange.keyboard)
+  return _internal_mutable_keyboard();
+}
+
 inline bool Exchange::has_dataBody() const {
   return dataBody_case() != DATABODY_NOT_SET;
 }
@@ -3984,9 +4705,127 @@ inline void APMouseMove::set_pointy(::PROTOBUF_NAMESPACE_ID::int32 value) {
   // @@protoc_insertion_point(field_set:BigPack.APMouseMove.pointY)
 }
 
+// -------------------------------------------------------------------
+
+// APMouseKey
+
+// int32 keyCode = 1;
+inline void APMouseKey::clear_keycode() {
+  keycode_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 APMouseKey::_internal_keycode() const {
+  return keycode_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 APMouseKey::keycode() const {
+  // @@protoc_insertion_point(field_get:BigPack.APMouseKey.keyCode)
+  return _internal_keycode();
+}
+inline void APMouseKey::_internal_set_keycode(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  keycode_ = value;
+}
+inline void APMouseKey::set_keycode(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_keycode(value);
+  // @@protoc_insertion_point(field_set:BigPack.APMouseKey.keyCode)
+}
+
+// bool state = 2;
+inline void APMouseKey::clear_state() {
+  state_ = false;
+}
+inline bool APMouseKey::_internal_state() const {
+  return state_;
+}
+inline bool APMouseKey::state() const {
+  // @@protoc_insertion_point(field_get:BigPack.APMouseKey.state)
+  return _internal_state();
+}
+inline void APMouseKey::_internal_set_state(bool value) {
+  
+  state_ = value;
+}
+inline void APMouseKey::set_state(bool value) {
+  _internal_set_state(value);
+  // @@protoc_insertion_point(field_set:BigPack.APMouseKey.state)
+}
+
+// -------------------------------------------------------------------
+
+// APWheelEvent
+
+// bool deltaPos = 1;
+inline void APWheelEvent::clear_deltapos() {
+  deltapos_ = false;
+}
+inline bool APWheelEvent::_internal_deltapos() const {
+  return deltapos_;
+}
+inline bool APWheelEvent::deltapos() const {
+  // @@protoc_insertion_point(field_get:BigPack.APWheelEvent.deltaPos)
+  return _internal_deltapos();
+}
+inline void APWheelEvent::_internal_set_deltapos(bool value) {
+  
+  deltapos_ = value;
+}
+inline void APWheelEvent::set_deltapos(bool value) {
+  _internal_set_deltapos(value);
+  // @@protoc_insertion_point(field_set:BigPack.APWheelEvent.deltaPos)
+}
+
+// -------------------------------------------------------------------
+
+// APKeyboard
+
+// int32 keyCode = 1;
+inline void APKeyboard::clear_keycode() {
+  keycode_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 APKeyboard::_internal_keycode() const {
+  return keycode_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 APKeyboard::keycode() const {
+  // @@protoc_insertion_point(field_get:BigPack.APKeyboard.keyCode)
+  return _internal_keycode();
+}
+inline void APKeyboard::_internal_set_keycode(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  keycode_ = value;
+}
+inline void APKeyboard::set_keycode(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_keycode(value);
+  // @@protoc_insertion_point(field_set:BigPack.APKeyboard.keyCode)
+}
+
+// bool state = 2;
+inline void APKeyboard::clear_state() {
+  state_ = false;
+}
+inline bool APKeyboard::_internal_state() const {
+  return state_;
+}
+inline bool APKeyboard::state() const {
+  // @@protoc_insertion_point(field_get:BigPack.APKeyboard.state)
+  return _internal_state();
+}
+inline void APKeyboard::_internal_set_state(bool value) {
+  
+  state_ = value;
+}
+inline void APKeyboard::set_state(bool value) {
+  _internal_set_state(value);
+  // @@protoc_insertion_point(field_set:BigPack.APKeyboard.state)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

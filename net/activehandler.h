@@ -19,12 +19,16 @@ protected:
 
 private:
    QString m_transferID ;
-
+   bool m_isAuthenticated;
 public slots:
    void setRemoteID(const QString &remoteID);
    void setRemotePass(const QString &remotePass);
 
    void slotSendMouseMove(int x,int y);
+   void slotSendMouseKeys(int code ,bool state);
+   //void sendleaveLook();
+   void slotSendWheelEvent(bool detal);
+   void slotSendKeyboard(int code, bool state);
 private slots:
    void queryHost(const QString &remoteID);
    void sendRequestAuth(const QString &remoteID,const QString &remotePass);
