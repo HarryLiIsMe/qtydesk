@@ -1,18 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
 #include "activewindow.h"
 
 #include <QSettings>
-//#include <QUuid>
 #include <QThread>
-//#include <QApplication>
 #include <QCommonStyle>
 #include <QMessageBox>
-//#include <QClipboard>
-//#include <QInputDialog>
 #include <QUuid>
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -38,7 +32,30 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::aboutMe()
+{
+    QString text = tr("<h3>QtyDesk远程桌面</h3>\n\n"
+                       "<p>远程桌面软件，开箱即用，无需任何配置。您完全掌控数据，不用担心安全问题。</p>");
+    QString contacts = tr("<p>联系:</p><p>邮箱:  javacgo@163.com</p>"
+                       "<p>Github: <a href=\"https://%1/\">%1</a></p>"
+                       "<p>当前版本: <a href=\"http://%2/\">0.0.5 beta</a></p>").
+            arg(QStringLiteral("github.com/mathwm"),
+                QStringLiteral("qtydesk.com"));
+
+    QMessageBox *msgBox = new QMessageBox(this);
+    msgBox->setWindowTitle(tr("关于QtyDesk远程桌面"));
+    msgBox->setText(text);
+    msgBox->setInformativeText(contacts);
+
+    msgBox->setIconPixmap(QPixmap(":/img/images/logo.ico"));
+    msgBox->exec();
+    delete msgBox;
+}
 void MainWindow::loadUIConnect(){
+
+    connect(ui->bt_settings,&BtnSettings::aboutQtyDesk,this,&MainWindow::aboutMe) ;
+
     connect(ui->bt_eye,&BtnShowPasswd::showPasswd,this,&MainWindow::showPasswd) ;
 
     connect(ui->bt_changePasswd,&BtnPassSetting::reflashPasswd,this,&MainWindow::getRandomString) ;

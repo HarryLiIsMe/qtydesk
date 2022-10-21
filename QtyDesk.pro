@@ -34,6 +34,7 @@ SOURCES += \
     machine/deviceinfo.cpp \
     proto/Exchange.pb.cc \
     ui/button/btnpasssetting.cpp \
+    ui/button/btnsettings.cpp \
     ui/button/btnshowpasswd.cpp \
     ui/dialog/dlgchangepasswd.cpp \
     ui/dialog/dlgconnectmessage.cpp \
@@ -51,6 +52,7 @@ HEADERS += \
     machine/deviceinfo.h \
     proto/Exchange.pb.h \
     ui/button/btnpasssetting.h \
+    ui/button/btnsettings.h \
     ui/button/btnshowpasswd.h \
     ui/dialog/dlgchangepasswd.h \
     ui/dialog/dlgconnectmessage.h \

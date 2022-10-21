@@ -44,6 +44,7 @@ signals:
     void closeSignal();
 
 public slots:
+      void aboutMe();
       void showPasswd(bool show);
       void showChangePassDialog();
       void setTempPassword(const QString &passwd);

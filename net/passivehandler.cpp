@@ -1,5 +1,4 @@
 #include "passivehandler.h"
-
 PassiveHandler::PassiveHandler(QObject *parent) : SocketHandler(parent),
     m_graberClass(new GraberClass(this)),
     m_inputSimulator(new InputSimulator(this))
@@ -35,6 +34,8 @@ void PassiveHandler::dealProto(int i,BigPack::Exchange resv_exc){
         if(resv_exc.replyinfo().success()){
             this->m_transferID = QString::fromStdString(resv_exc.replyinfo().registerid());
             emit showDeviceID(this->m_transferID);
+        }else{
+            qDebug()<<"ID 不注册成功";
         }
         break;
     }

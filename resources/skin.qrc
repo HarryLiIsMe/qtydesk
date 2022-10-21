@@ -2,12 +2,15 @@
     <qresource prefix="/img">
         <file>images/error.png</file>
         <file>images/eye.png</file>
-        <file>images/favicon.ico</file>
         <file>images/key.png</file>
         <file>images/more.png</file>
         <file>images/pen.png</file>
         <file>images/tv.png</file>
         <file>images/xun.png</file>
+        <file>images/logo.ico</file>
+        <file>images/favicon.ico</file>
+        <file>images/favicon-16x16.png</file>
+        <file>images/favicon-32x32.png</file>
     </qresource>
     <qresource prefix="/qs">
         <file>qsss/menu.qss</file>

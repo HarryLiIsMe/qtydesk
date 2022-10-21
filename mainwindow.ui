@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>QtyDesk</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources/skin.qrc">
+    <normaloff>:/img/images/favicon-32x32.png</normaloff>:/img/images/favicon-32x32.png</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="spacing">
@@ -145,7 +149,7 @@ color: rgb(102, 102, 102)</string>
          <string>--- --- ---</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="bt_settings">
+       <widget class="BtnSettings" name="bt_settings">
         <property name="geometry">
          <rect>
           <x>170</x>
@@ -520,9 +524,16 @@ border-radius:10px;
   <customwidget>
    <class>BtnPassSetting</class>
    <extends>QPushButton</extends>
-   <header location="global">ui/button/btnpasssetting.h</header>
+   <header>ui/button/btnpasssetting.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BtnSettings</class>
+   <extends>QPushButton</extends>
+   <header location="global">ui/button/btnsettings.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="resources/skin.qrc"/>
+ </resources>
  <connections/>
 </ui>
