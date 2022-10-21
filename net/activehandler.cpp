@@ -180,5 +180,7 @@ void ActiveHandler::slotSendKeyboard(int code, bool state)
     BigPack::APKeyboard *keyboard = new BigPack::APKeyboard;
     keyboard->set_keycode(code);
     keyboard->set_state(state);
+
+    ex.set_allocated_keyboard(keyboard);
     serializeSend(ex);
 }
