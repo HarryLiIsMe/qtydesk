@@ -5,24 +5,17 @@ PassiveHandler::PassiveHandler(QObject *parent) : SocketHandler(parent),
 {
     connect(m_graberClass, &GraberClass::imageParameters, this, &PassiveHandler::sendImageParameters);
     connect(m_graberClass, &GraberClass::imageTile, this, &PassiveHandler::sendImageTile);
-    //connect(m_graberClass, &GraberClass::screenPositionChanged, m_inputSimulator, &InputSimulator::setScreenPosition);
+
     connect(this, &PassiveHandler::getDesktop, m_graberClass, &GraberClass::startSending);
-
-    //    connect(m_graberClass, &GraberClass::imageParameters, socketHandler, &PassiveHandler::sendImageParameters);
-    //    connect(m_graberClass, &GraberClass::imageTile, socketHandler, &PassiveHandler::sendImageTile);
-    //    //connect(m_graberClass, &GraberClass::screenPositionChanged, m_inputSimulator, &InputSimulator::setScreenPosition);
-
-    //    connect(socketHandler, &PassiveHandler::getDesktop, m_graberClass, &GraberClass::startSending);
-    //    connect(webSocketHandler, &WebSocketHandler::changeDisplayNum, m_graberClass, &GraberClass::changeScreenNum);
     connect(this, &PassiveHandler::receivedTileNum, m_graberClass, &GraberClass::setReceivedTileNum);
-
-    //    connect(webSocketHandler, &WebSocketHandler::setKeyPressed, m_inputSimulator, &InputSimulator::simulateKeyboard);
+    //    //connect(m_graberClass, &GraberClass::screenPositionChanged, m_inputSimulator, &InputSimulator::setScreenPosition);
+    //    connect(webSocketHandler, &WebSocketHandler::changeDisplayNum, m_graberClass, &GraberClass::changeScreenNum);
 
     connect(this, &PassiveHandler::setMouseMove, m_inputSimulator, &InputSimulator::simulateMouseMove);
     connect(this, &PassiveHandler::setMousePressed, m_inputSimulator, &InputSimulator::simulateMouseKeys);
-    //    connect(webSocketHandler, &WebSocketHandler::setWheelChanged, m_inputSimulator, &InputSimulator::simulateWheelEvent);
+    connect(this, &PassiveHandler::setWheelChanged, m_inputSimulator, &InputSimulator::simulateWheelEvent);
+    connect(this, &PassiveHandler::setKeyPressed, m_inputSimulator, &InputSimulator::simulateKeyboard);
     //    connect(webSocketHandler, &WebSocketHandler::setMouseDelta, m_inputSimulator, &InputSimulator::setMouseDelta);
-
 
     m_graberClass->start();
 }
@@ -81,6 +74,18 @@ void PassiveHandler::dealProto(int i,BigPack::Exchange resv_exc){
         int keycode = resv_exc.mousekey().keycode();
         int state = resv_exc.mousekey().state();
         emit setMousePressed(keycode,state);
+        break;
+    }
+    case BigPack::Exchange::WHEEL_EVENT:{
+        bool deltaPos = resv_exc.wheelevent().deltapos();
+        emit setWheelChanged(deltaPos);
+        break;
+    }
+    case BigPack::Exchange::KEY_BOARD:{
+        int keycode = resv_exc.keyboard().keycode();
+        int state = resv_exc.keyboard().state();
+        emit setKeyPressed(keycode,state);
+        break;
     }
     }
 }

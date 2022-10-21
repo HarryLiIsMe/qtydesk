@@ -28,6 +28,7 @@ void ActiveHandler::dealProto(int i, BigPack::Exchange resv_exc)
     }
     case BigPack::Exchange::RESPONSE_AUTH:{
         if(resv_exc.responseauth().success()){
+            //这边注意，断开时候记得赋值为false回来，暂时没做，这里注释下
             m_isAuthenticated = true ;
             GetDesktop();
         }else{
@@ -155,6 +156,15 @@ void ActiveHandler::slotSendWheelEvent(bool detal)
     if(!m_isAuthenticated){
         return ;
     }
+    BigPack::Exchange ex ;
+    ex.set_datatype(BigPack::Exchange::WHEEL_EVENT);
+    ex.set_resourceid(m_transferID.toStdString()) ;
+    ex.set_targetid(m_remoteID.toStdString());
+
+    BigPack::APWheelEvent *wlEvent = new BigPack::APWheelEvent;
+    wlEvent->set_deltapos(detal);
+    ex.set_allocated_wheelevent(wlEvent);
+    serializeSend(ex);
 }
 
 void ActiveHandler::slotSendKeyboard(int code, bool state)
@@ -162,4 +172,13 @@ void ActiveHandler::slotSendKeyboard(int code, bool state)
     if(!m_isAuthenticated){
         return ;
     }
+    BigPack::Exchange ex ;
+    ex.set_datatype(BigPack::Exchange::KEY_BOARD);
+    ex.set_resourceid(m_transferID.toStdString()) ;
+    ex.set_targetid(m_remoteID.toStdString());
+
+    BigPack::APKeyboard *keyboard = new BigPack::APKeyboard;
+    keyboard->set_keycode(code);
+    keyboard->set_state(state);
+    serializeSend(ex);
 }
