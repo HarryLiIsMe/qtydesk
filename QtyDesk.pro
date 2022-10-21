@@ -68,9 +68,9 @@ RESOURCES += \
     resources/skin.qrc
 
 # protobuf version: 3.16.0
-win32: LIBS += -LD:/alib/protobuf/lib -llibprotobuf.dll
-INCLUDEPATH += D:/alib/protobuf/include
-DEPENDPATH += D:/alib/protobuf/include
+#win32: LIBS += -LD:/alib/protobuf/lib -llibprotobuf.dll
+#INCLUDEPATH += D:/alib/protobuf/include
+#DEPENDPATH += D:/alib/protobuf/include
 
 # libyuv version: only
 #win32: LIBS += -LD:/alib/libyuv/lib -llibyuv.dll
@@ -84,3 +84,9 @@ DEPENDPATH += D:/alib/protobuf/include
 #win32: LIBS += -LC:\Qt\Qt5.9.9\Tools\mingw530_32\i686-w64-mingw32\lib -luser32
 #win32: LIBS += -LC:\Qt\Qt5.9.9\Tools\mingw530_32\i686-w64-mingw32\lib -llibgdi32
 #win32: LIBS += -LC:\Qt\Qt5.9.9\Tools\mingw530_32\i686-w64-mingw32\lib -lole32
+
+win32: LIBS += -L$$PWD/libs/protobuf/lib/ -llibprotobuf.dll
+
+INCLUDEPATH += $$PWD/libs/protobuf/include
+DEPENDPATH += $$PWD/libs/protobuf/include
+

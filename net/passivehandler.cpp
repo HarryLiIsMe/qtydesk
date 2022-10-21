@@ -35,7 +35,7 @@ void PassiveHandler::dealProto(int i,BigPack::Exchange resv_exc){
             this->m_transferID = QString::fromStdString(resv_exc.replyinfo().registerid());
             emit showDeviceID(this->m_transferID);
         }else{
-            qDebug()<<"ID 不注册成功";
+            qDebug()<<"[dealProto] ID注册不成功";
         }
         break;
     }

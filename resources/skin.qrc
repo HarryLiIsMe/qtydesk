@@ -14,5 +14,6 @@
     </qresource>
     <qresource prefix="/qs">
         <file>qsss/menu.qss</file>
+        <file>qsss/style1.css</file>
     </qresource>
 </RCC>

@@ -156,7 +156,7 @@ void SocketHandler::handleConnected(){
 }
 void SocketHandler::handleSocketError(QAbstractSocket::SocketError)
 {  
-   qDebug() << m_sslsocket->errorString();
+   qDebug() << +"【handleSocketError】"+m_sslsocket->errorString();
 }
 void SocketHandler::socketStateChanged(QAbstractSocket::SocketState state)
 {
@@ -164,7 +164,7 @@ void SocketHandler::socketStateChanged(QAbstractSocket::SocketState state)
     {
     case QAbstractSocket::UnconnectedState:
     {
-        qDebug()<<"SocketHandler::socketStateChanged: 没有连到服务器.";
+        qDebug()<<"【SocketHandler::socketStateChanged】: 没有连到服务器.";
         if(m_timerReconnect)
             if(!m_timerReconnect->isActive())
                 m_timerReconnect->start(5000);
@@ -189,7 +189,7 @@ void SocketHandler::socketStateChanged(QAbstractSocket::SocketState state)
     }
     case QAbstractSocket::ClosingState:
     {
-        qDebug()<<"SocketHandler::socketStateChanged: 从服务器断开.";
+        qDebug()<<"【SocketHandler::socketStateChanged】: 从服务器断开.";
         emit connectedStatus(false);
         //m_isAuthenticated = false;
 

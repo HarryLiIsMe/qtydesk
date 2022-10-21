@@ -20,23 +20,35 @@ MainWindow::MainWindow(QWidget *parent) :
     m_ssl(false)
 {
     ui->setupUi(this);
-
+    //loadStyleSheet();
     loadUIConnect();
     //加载配置文件
     loadTrayMenu();
     loadSettings();
-
-
 }
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+void MainWindow::loadStyleSheet()
+{
+    m_styleString.clear();
+    QFile file("style.css");
+    if(file.open(QIODevice::ReadOnly))
+    {
+        m_styleString.append(file.readAll());
+        file.close();
+    }
 
+    if(m_styleString.isEmpty())
+        return;
+
+    setStyleSheet(m_styleString);
+}
 void MainWindow::aboutMe()
 {
     QString text = tr("<h3>QtyDesk远程桌面</h3>\n\n"
-                       "<p>远程桌面软件，开箱即用，无需任何配置。您完全掌控数据，不用担心安全问题。</p>");
+                       "<p>远程桌面软件，开箱即用，无需任何配置。轻量级远程办公。</p>");
     QString contacts = tr("<p>联系:</p><p>邮箱:  javacgo@163.com</p>"
                        "<p>Github: <a href=\"https://%1/\">%1</a></p>"
                        "<p>当前版本: <a href=\"http://%2/\">0.0.5 beta</a></p>").
@@ -252,6 +264,10 @@ QString MainWindow::getRandomString()
 void MainWindow::on_bt_connectRemoteDevice_clicked()
 {
     QString remoteID = ui->ed_remoteID->text().remove(QRegExp("\\s"));
+    if(remoteID.isEmpty()){
+        ui->ed_remoteID->setFocus();
+        return ;
+    }
     QString remotePass = ui->ed_remotePass->text();
     //注意内存泄漏，不用时候记得删除
     ActiveWindow *activeWindow = new ActiveWindow;

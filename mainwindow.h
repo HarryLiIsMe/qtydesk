@@ -25,6 +25,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QString m_styleString;
     //WebSocketTransfer *m_webSocketTransfer;
     PassiveHandler *m_socketHandler;
     DlgChangePasswd *m_changeDialog;
@@ -49,6 +50,7 @@ public slots:
       void showChangePassDialog();
       void setTempPassword(const QString &passwd);
 private slots:
+      void loadStyleSheet();
       QString getRandomString();
       void loadTrayMenu();
       //小图标事件
