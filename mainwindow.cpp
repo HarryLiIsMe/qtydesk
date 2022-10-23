@@ -271,6 +271,7 @@ void MainWindow::on_bt_connectRemoteDevice_clicked()
     QString remotePass = ui->ed_remotePass->text();
     //注意内存泄漏，不用时候记得删除
     ActiveWindow *activeWindow = new ActiveWindow;
+    activeWindow->setWindowTitle("远程主机ID: "+remoteID);
     activeWindow->show();
     activeWindow->startActiveHandler(m_remoteHost,m_remotePort,remoteID,remotePass,m_ssl);
 }
